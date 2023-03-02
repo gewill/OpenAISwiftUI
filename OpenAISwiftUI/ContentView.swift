@@ -62,15 +62,22 @@ struct ContentView: View {
         }
       }
       HStack {
-        TextField("prompt", text: $viewModel.prompt)
-          .onSubmit {
-            viewModel.requestAI()
+        Group {
+          if #available(iOS 16.0, macOS 13.0, *) {
+            TextField("prompt", text: $viewModel.prompt, axis: .vertical)
+              .lineLimit(1 ... 5)
+          } else {
+            TextField("prompt", text: $viewModel.prompt)
           }
-          .focused($isFocus)
-          .onAppear {
-            isFocus = true
-          }
-          .textFieldStyle(.roundedBorder)
+        }
+        .onSubmit {
+          viewModel.requestAI()
+        }
+        .focused($isFocus)
+        .onAppear {
+          isFocus = true
+        }
+        .textFieldStyle(.roundedBorder)
         Button {
           isFocus = false
           viewModel.requestAI()
