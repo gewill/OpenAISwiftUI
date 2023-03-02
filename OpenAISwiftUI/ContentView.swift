@@ -16,10 +16,10 @@ struct ContentView: View {
   var body: some View {
     VStack {
       ScrollViewReader { scrollViewReader in
-        List {
-          TextField("token", text: $viewModel.token)
-          ForEach(viewModel.messages) { message in
-            Section {
+        ScrollView {
+          LazyVStack {
+            TextField("API key", text: $viewModel.apiKey)
+            ForEach(viewModel.messages) { message in
               HStack(alignment: .top) {
                 VStack {
                   switch message.role {
@@ -47,9 +47,12 @@ struct ContentView: View {
                   Image(systemName: "doc.on.doc")
                 }
               }
+              .padding()
+              .background(message.role == .user ? Color.clear : Color.gray.opacity(0.1))
             }
           }
         }
+        .padding()
         .onChange(of: viewModel.scrollId) { newValue in
           if let newValue {
             withAnimation {

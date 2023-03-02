@@ -24,17 +24,24 @@ struct Message: Identifiable {
 }
 
 class ViewModel: ObservableObject {
-  var openAI: ChatGPTAPI { ChatGPTAPI(apiKey: token) }
-  @AppStorage("token") var token: String = ""
+  var openAI: ChatGPTAPI!
+  @AppStorage("apiKey") var apiKey: String = "" {
+    didSet { openAI = ChatGPTAPI(apiKey: apiKey) }
+  }
+
   @Published var prompt: String = ""
   @Published var messages: [Message] = []
   @Published var scrollId: UUID?
   @Published var isLoading: Bool = false
 
-  let errorMessage = "\nPlease check token and network."
+  let errorMessage = "\nPlease check API key and network."
+
+  init() {
+    self.openAI = .init(apiKey: apiKey)
+  }
 
   func requestAI() {
-    guard token.isEmpty == false else {
+    guard apiKey.isEmpty == false else {
       showErrorMessage(text: errorMessage)
       return
     }
