@@ -44,9 +44,12 @@ class ViewModel: ObservableObject {
     }
     isLoading = true
 
+    let prompt = self.prompt
+    self.prompt = ""
+
     Task.detached {
       do {
-        let response = try await self.openAI.sendCompletion(with: self.prompt,
+        let response = try await self.openAI.sendCompletion(with: prompt,
                                                             model: .gpt3(.davinci),
                                                             maxTokens: 1000)
         await self.updateMessages(to: response.choices.map { Message(role: .system, text: $0.text, status: .success) })
@@ -59,7 +62,6 @@ class ViewModel: ObservableObject {
     messages.append(promptMessage)
     messages.append(Message(role: .system, text: "", status: .loading))
     scrollId = promptMessage.id
-    prompt = ""
   }
 
   @MainActor
