@@ -11,9 +11,9 @@
 		BE67A58929B0ECED00BBAD4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A58829B0ECED00BBAD4B /* ContentView.swift */; };
 		BE67A58B29B0ECEE00BBAD4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */; };
 		BE67A58F29B0ECEE00BBAD4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67A58E29B0ECEE00BBAD4B /* Preview Assets.xcassets */; };
-		BE67A59729B0ED0000BBAD4B /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = BE67A59629B0ED0000BBAD4B /* OpenAISwift */; };
 		BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59829B0ED2700BBAD4B /* ViewModel.swift */; };
 		BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */; };
+		BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE67A59729B0ED0000BBAD4B /* OpenAISwift in Frameworks */,
+				BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +96,7 @@
 			);
 			name = OpenAISwiftUI;
 			packageProductDependencies = (
-				BE67A59629B0ED0000BBAD4B /* OpenAISwift */,
+				BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */,
 			);
 			productName = OpenAISwiftUI;
 			productReference = BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */;
@@ -127,7 +127,7 @@
 			);
 			mainGroup = BE67A57A29B0ECED00BBAD4B;
 			packageReferences = (
-				BE67A59529B0ED0000BBAD4B /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */,
 			);
 			productRefGroup = BE67A58429B0ECED00BBAD4B /* Products */;
 			projectDirPath = "";
@@ -374,9 +374,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BE67A59529B0ED0000BBAD4B /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+		BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
+			repositoryURL = "https://github.com/alfianlosari/ChatGPTSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -385,10 +385,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BE67A59629B0ED0000BBAD4B /* OpenAISwift */ = {
+		BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE67A59529B0ED0000BBAD4B /* XCRemoteSwiftPackageReference "OpenAISwift" */;
-			productName = OpenAISwift;
+			package = BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */;
+			productName = ChatGPTSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

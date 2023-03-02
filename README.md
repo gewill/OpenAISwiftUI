@@ -14,3 +14,4 @@ Input your [token](https://platform.openai.com/account/api-keys) first.
 
 Use SDK [adamrushy/OpenAISwift](https://github.com/adamrushy/OpenAISwift)
 
+Use SDK [alfianlosari/ChatGPTSwift](https://github.com/alfianlosari/ChatGPTSwift)

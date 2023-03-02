@@ -5,7 +5,7 @@
 //  Created by will on 02/03/2023.
 //
 
-import OpenAISwift
+import ChatGPTSwift
 import SwiftUI
 
 struct Message: Identifiable {
@@ -24,7 +24,7 @@ struct Message: Identifiable {
 }
 
 class ViewModel: ObservableObject {
-  var openAI: OpenAISwift { OpenAISwift(authToken: token) }
+  var openAI: ChatGPTAPI { ChatGPTAPI(apiKey: token) }
   @AppStorage("token") var token: String = ""
   @Published var prompt: String = ""
   @Published var messages: [Message] = []
@@ -49,10 +49,8 @@ class ViewModel: ObservableObject {
 
     Task.detached {
       do {
-        let response = try await self.openAI.sendCompletion(with: prompt,
-                                                            model: .gpt3(.davinci),
-                                                            maxTokens: 1000)
-        await self.updateMessages(to: response.choices.map { Message(role: .system, text: $0.text, status: .success) })
+        let response = try await self.openAI.sendMessage(text: prompt)
+        await self.updateMessages(to: [Message(role: .system, text: response, status: .success)])
       } catch {
         await self.updateMessages(to: [Message(role: .system, text: error.localizedDescription + self.errorMessage, status: .error)])
       }
