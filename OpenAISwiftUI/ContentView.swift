@@ -89,6 +89,7 @@ struct ContentView: View {
       .disabled(viewModel.isLoading)
       .padding()
     }
+    .tint(.accentColor)
   }
 }
 
