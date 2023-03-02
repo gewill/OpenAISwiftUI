@@ -18,7 +18,12 @@ struct ContentView: View {
       ScrollViewReader { scrollViewReader in
         ScrollView {
           LazyVStack {
-            TextField("API key", text: $viewModel.apiKey)
+            HStack {
+              TextField("API key", text: $viewModel.apiKey)
+              Link(destination: URL(string: "https://github.com/gewill/OpenAISwiftUI")!) {
+                Image(systemName: "questionmark.circle")
+              }
+            }
             ForEach(viewModel.messages) { message in
               HStack(alignment: .top) {
                 VStack {
