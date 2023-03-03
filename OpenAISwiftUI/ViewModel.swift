@@ -48,6 +48,7 @@ class ViewModel: NSObject, ObservableObject {
     didSet {
       if isEnableSpeech == false {
         stopSpeak()
+        speechTexts = []
       }
     }
   }
@@ -66,6 +67,7 @@ class ViewModel: NSObject, ObservableObject {
     super.init()
 
     self.openAI = .init(apiKey: apiKey)
+    setPlaybackMode()
     self.selectedVoice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) ?? AVSpeechSynthesisVoice(language: "en-US")
     synthesizer.delegate = self
   }
@@ -137,6 +139,8 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
   // MARK: - Speech methods
 
   func speak(_ text: String) {
+    activePlayback()
+
     let utterance = AVSpeechUtterance(string: text)
     utterance.rate = 0.5
     utterance.pitchMultiplier = 0.8
@@ -158,7 +162,10 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
 
   func speakNext() {
     speechQueueDispatch.async {
-      guard !self.speechTexts.isEmpty else { return }
+      guard !self.speechTexts.isEmpty else {
+        self.deactivePlayback()
+        return
+      }
       let text = self.speechTexts.removeFirst()
       self.speak(text)
     }
@@ -166,6 +173,7 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
 
   func stopSpeak() {
     synthesizer.stopSpeaking(at: .immediate)
+    deactivePlayback()
   }
 
   func clearSpeak() {
@@ -173,10 +181,57 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
     stopSpeak()
   }
 
+  // MARK: - AVAudioSession PlaybackMode
+
+  func setPlaybackMode() {
+    do {
+      try AVAudioSession.sharedInstance().setCategory(.playback, mode: .voicePrompt, options: [.mixWithOthers, .duckOthers])
+    } catch {
+      print(error)
+    }
+  }
+
+  func activePlayback() {
+    do {
+      try AVAudioSession.sharedInstance().setActive(true)
+    } catch {
+      print(error)
+    }
+  }
+
+  func deactivePlayback() {
+    do {
+      try AVAudioSession.sharedInstance().setActive(false)
+    } catch {
+      print(error)
+    }
+  }
+
   // MARK: - AVSpeechSynthesizerDelegate
 
+  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+    print("synthesizer didStart")
+  }
+
+  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
+    print("synthesizer willSpeakRange")
+  }
+
+  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
+    print("synthesizer didPause")
+  }
+
+  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didContinue utterance: AVSpeechUtterance) {
+    print("synthesizer didContinue")
+  }
+
   func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+    print("synthesizer didFinish")
     // Speak the next utterance in the queue
     speakNext()
+  }
+
+  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+    print("synthesizer didCancel")
   }
 }
