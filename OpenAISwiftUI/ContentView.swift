@@ -18,12 +18,6 @@ struct ContentView: View {
       ScrollViewReader { scrollViewReader in
         ScrollView {
           LazyVStack {
-            HStack {
-              SecureField("API key", text: $viewModel.apiKey)
-              Link(destination: URL(string: "https://github.com/gewill/OpenAISwiftUI")!) {
-                Image(systemName: "questionmark.circle")
-              }
-            }
             ForEach(viewModel.messages) { message in
               HStack(alignment: .top) {
                 VStack {
@@ -68,16 +62,40 @@ struct ContentView: View {
       }
       VStack {
         HStack {
-          VoicePicker(selectedVoice: $viewModel.selectedVoice)
           Button {
-            viewModel.isEnableSpeech.toggle()
+            viewModel.showMoreOptions.toggle()
           } label: {
-            if viewModel.isEnableSpeech {
-              Image(systemName: "speaker.wave.2.circle.fill")
-                .foregroundColor(Color.green)
-            } else {
-              Image(systemName: "speaker.slash.circle.fill")
-                .foregroundColor(Color.pink)
+            Image(systemName: viewModel.showMoreOptions ? "chevron.compact.up" : "chevron.compact.down")
+          }
+          Button {
+            viewModel.clearMessages()
+          } label: {
+            Image(systemName: "trash.circle.fill")
+          }
+          Spacer()
+        }
+        if viewModel.showMoreOptions {
+          VStack(alignment: .leading) {
+            HStack() {
+              Text("You must input openai API key first.")
+              Link(destination: URL(string: "https://github.com/gewill/OpenAISwiftUI")!) {
+                Image(systemName: "questionmark.circle")
+              }
+            }
+            SecureField("API key", text: $viewModel.apiKey)
+          }
+          HStack {
+            VoicePicker(selectedVoice: $viewModel.selectedVoice)
+            Button {
+              viewModel.isEnableSpeech.toggle()
+            } label: {
+              if viewModel.isEnableSpeech {
+                Image(systemName: "speaker.wave.2.circle.fill")
+                  .foregroundColor(Color.green)
+              } else {
+                Image(systemName: "speaker.slash.circle.fill")
+                  .foregroundColor(Color.pink)
+              }
             }
           }
         }

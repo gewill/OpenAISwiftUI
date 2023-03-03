@@ -34,6 +34,7 @@ class ViewModel: NSObject, ObservableObject {
   @Published var messages: [Message] = []
   @Published var scrollId: UUID?
   @Published var isLoading: Bool = false
+  @AppStorage("showMoreOptions") var showMoreOptions: Bool = true
 
   let errorMessage = "\nPlease check API key and network."
 
@@ -123,6 +124,13 @@ class ViewModel: NSObject, ObservableObject {
     scrollId = message.id
     addToQueue(text)
   }
+
+  func clearMessages() {
+    messages = []
+    clearSpeak()
+    openAI.deleteHistoryList()
+    openAI = .init(apiKey: apiKey)
+  }
 }
 
 extension ViewModel: AVSpeechSynthesizerDelegate {
@@ -158,6 +166,11 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
 
   func stopSpeak() {
     synthesizer.stopSpeaking(at: .immediate)
+  }
+
+  func clearSpeak() {
+    speechTexts = []
+    stopSpeak()
   }
 
   // MARK: - AVSpeechSynthesizerDelegate
