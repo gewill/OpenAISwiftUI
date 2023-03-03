@@ -169,27 +169,33 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
   // MARK: - AVAudioSession PlaybackMode
 
   func setPlaybackMode() {
-    do {
-      try AVAudioSession.sharedInstance().setCategory(.playback, mode: .voicePrompt, options: [.mixWithOthers, .duckOthers])
-    } catch {
-      print(error)
-    }
+    #if os(iOS)
+      do {
+        try AVAudioSession.sharedInstance().setCategory(.playback, mode: .voicePrompt, options: [.mixWithOthers, .duckOthers])
+      } catch {
+        print(error)
+      }
+    #endif
   }
 
   func activePlayback() {
-    do {
-      try AVAudioSession.sharedInstance().setActive(true)
-    } catch {
-      print(error)
-    }
+    #if os(iOS)
+      do {
+        try AVAudioSession.sharedInstance().setActive(true)
+      } catch {
+        print(error)
+      }
+    #endif
   }
 
   func deactivePlayback() {
-    do {
-      try AVAudioSession.sharedInstance().setActive(false)
-    } catch {
-      print(error)
-    }
+    #if os(iOS)
+      do {
+        try AVAudioSession.sharedInstance().setActive(false)
+      } catch {
+        print(error)
+      }
+    #endif
   }
 
   // MARK: - AVSpeechSynthesizerDelegate
