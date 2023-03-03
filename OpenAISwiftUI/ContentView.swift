@@ -51,7 +51,6 @@ struct ContentView: View {
             }
           }
         }
-        .padding()
         .onChange(of: viewModel.scrollId) { newValue in
           if let newValue {
             withAnimation {
@@ -76,7 +75,7 @@ struct ContentView: View {
         }
         if viewModel.showMoreOptions {
           VStack(alignment: .leading) {
-            HStack() {
+            HStack {
               Text("You must input openai API key first.")
               Link(destination: URL(string: "https://github.com/gewill/OpenAISwiftUI")!) {
                 Image(systemName: "questionmark.circle")
@@ -125,9 +124,9 @@ struct ContentView: View {
           .buttonStyle(.bordered)
         }
         .disabled(viewModel.isLoading)
-      }
-      .padding()
+      } 
     }
+    .padding()
     .tint(.accentColor)
   }
 }
