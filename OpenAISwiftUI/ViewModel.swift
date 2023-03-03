@@ -44,7 +44,7 @@ class ViewModel: NSObject, ObservableObject {
   var speechTexts = [String]()
   let speechQueueDispatch = DispatchQueue(label: "org.gewill.speechQueue", qos: .userInteractive)
 
-  @AppStorage("isEnableSpeech") var isEnableSpeech: Bool = false {
+  @AppStorage("isEnableSpeech") var isEnableSpeech: Bool = true {
     didSet {
       if isEnableSpeech == false {
         stopSpeak()
