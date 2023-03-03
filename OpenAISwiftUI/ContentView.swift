@@ -65,12 +65,14 @@ struct ContentView: View {
             viewModel.showMoreOptions.toggle()
           } label: {
             Image(systemName: viewModel.showMoreOptions ? "chevron.compact.down" : "chevron.compact.up")
+              .padding(.vertical, 6)
           }
           Button {
             viewModel.clearMessages()
           } label: {
             Image(systemName: "trash.circle.fill")
           }
+          .tint(.pink)
           Spacer()
         }
         if viewModel.showMoreOptions {
@@ -121,13 +123,13 @@ struct ContentView: View {
           } label: {
             Text("Send")
           }
-          .buttonStyle(.bordered)
         }
         .disabled(viewModel.isLoading)
       }
     }
     .padding()
     .tint(.accentColor)
+    .buttonStyle(.bordered)
   }
 }
 
