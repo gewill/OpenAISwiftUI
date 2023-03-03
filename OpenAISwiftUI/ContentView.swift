@@ -65,7 +65,7 @@ struct ContentView: View {
           Button {
             viewModel.showMoreOptions.toggle()
           } label: {
-            Image(systemName: viewModel.showMoreOptions ? "chevron.compact.up" : "chevron.compact.down")
+            Image(systemName: viewModel.showMoreOptions ? "chevron.compact.down" : "chevron.compact.up")
           }
           Button {
             viewModel.clearMessages()
