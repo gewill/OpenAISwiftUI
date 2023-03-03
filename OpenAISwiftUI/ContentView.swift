@@ -77,7 +77,7 @@ struct ContentView: View {
           VStack(alignment: .leading) {
             HStack {
               Text("You must input openai API key first.")
-              Link(destination: URL(string: "https://github.com/gewill/OpenAISwiftUI")!) {
+              Link(destination: URL(string: "https://platform.openai.com/account/api-keys")!) {
                 Image(systemName: "questionmark.circle")
               }
             }
@@ -124,7 +124,7 @@ struct ContentView: View {
           .buttonStyle(.bordered)
         }
         .disabled(viewModel.isLoading)
-      } 
+      }
     }
     .padding()
     .tint(.accentColor)
