@@ -92,12 +92,11 @@ struct ContentView: View {
             } label: {
               if viewModel.isEnableSpeech {
                 Image(systemName: "speaker.wave.2.circle.fill")
-                  .foregroundColor(Color.green)
               } else {
                 Image(systemName: "speaker.slash.circle.fill")
-                  .foregroundColor(Color.pink)
               }
             }
+            .tint(viewModel.isEnableSpeech ? Color.green : Color.pink)
           }
         }
         HStack {
