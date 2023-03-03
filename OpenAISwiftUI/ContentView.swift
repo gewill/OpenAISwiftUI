@@ -19,7 +19,7 @@ struct ContentView: View {
         ScrollView {
           LazyVStack {
             HStack {
-              TextField("API key", text: $viewModel.apiKey)
+              SecureField("API key", text: $viewModel.apiKey)
               Link(destination: URL(string: "https://github.com/gewill/OpenAISwiftUI")!) {
                 Image(systemName: "questionmark.circle")
               }
