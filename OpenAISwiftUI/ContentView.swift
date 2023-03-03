@@ -127,8 +127,8 @@ struct ContentView: View {
       }
     }
     .padding()
-    .tint(.accentColor)
-    .buttonStyle(.bordered)
+    .tint(.accent)
+    .buttonStyle(.borderedProminent)
   }
 }
 
