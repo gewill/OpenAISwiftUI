@@ -13,6 +13,7 @@
 		BE67A58F29B0ECEE00BBAD4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67A58E29B0ECEE00BBAD4B /* Preview Assets.xcassets */; };
 		BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59829B0ED2700BBAD4B /* ViewModel.swift */; };
 		BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */; };
+		BE74560B29B1949100E09F7F /* VoicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE74560A29B1949100E09F7F /* VoicePicker.swift */; };
 		BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		BE67A58E29B0ECEE00BBAD4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE67A59829B0ED2700BBAD4B /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		BE74560A29B1949100E09F7F /* VoicePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicePicker.swift; sourceTree = "<group>"; };
 		BEA9467929B113BD005F8F93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +67,7 @@
 				BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */,
 				BE67A58829B0ECED00BBAD4B /* ContentView.swift */,
 				BE67A59829B0ED2700BBAD4B /* ViewModel.swift */,
+				BE74560A29B1949100E09F7F /* VoicePicker.swift */,
 				BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */,
 				BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */,
 				BE67A58C29B0ECEE00BBAD4B /* OpenAISwiftUI.entitlements */,
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE74560B29B1949100E09F7F /* VoicePicker.swift in Sources */,
 				BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */,
 				BE67A58929B0ECED00BBAD4B /* ContentView.swift in Sources */,
 				BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */,

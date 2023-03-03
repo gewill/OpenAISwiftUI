@@ -66,32 +66,48 @@ struct ContentView: View {
           }
         }
       }
-      HStack {
-        Group {
-          if #available(iOS 16.0, macOS 13.0, *) {
-            TextField("prompt", text: $viewModel.prompt, axis: .vertical)
-              .lineLimit(1 ... 5)
-          } else {
-            TextField("prompt", text: $viewModel.prompt)
+      VStack {
+        HStack {
+          VoicePicker(selectedVoice: $viewModel.selectedVoice)
+          Button {
+            viewModel.isEnableSpeech.toggle()
+          } label: {
+            if viewModel.isEnableSpeech {
+              Image(systemName: "speaker.wave.2.circle.fill")
+                .foregroundColor(Color.green)
+            } else {
+              Image(systemName: "speaker.slash.circle.fill")
+                .foregroundColor(Color.pink)
+            }
           }
         }
-        .onSubmit {
-          viewModel.requestAI()
+        HStack {
+          Group {
+            if #available(iOS 16.0, macOS 13.0, *) {
+              TextField("prompt", text: $viewModel.prompt, axis: .vertical)
+                .lineLimit(1 ... 5)
+            } else {
+              TextField("prompt", text: $viewModel.prompt)
+            }
+          }
+          .onSubmit {
+            viewModel.requestAI()
+          }
+          .focused($isFocus)
+          .onAppear {
+            isFocus = true
+          }
+          .textFieldStyle(.roundedBorder)
+          Button {
+            isFocus = false
+            viewModel.requestAI()
+          } label: {
+            Text("Send")
+          }
+          .buttonStyle(.bordered)
         }
-        .focused($isFocus)
-        .onAppear {
-          isFocus = true
-        }
-        .textFieldStyle(.roundedBorder)
-        Button {
-          isFocus = false
-          viewModel.requestAI()
-        } label: {
-          Text("Send")
-        }
-        .buttonStyle(.bordered)
+        .disabled(viewModel.isLoading)
       }
-      .disabled(viewModel.isLoading)
       .padding()
     }
     .tint(.accentColor)
