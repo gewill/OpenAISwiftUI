@@ -41,14 +41,12 @@ class ViewModel: NSObject, ObservableObject {
   // MARK: - Speech properties
 
   let synthesizer = AVSpeechSynthesizer()
-  var speechTexts = [String]()
-  let speechQueueDispatch = DispatchQueue(label: "org.gewill.speechQueue", qos: .userInteractive)
+  let speechOperationQueue = OperationQueue()
 
   @AppStorage("isEnableSpeech") var isEnableSpeech: Bool = true {
     didSet {
       if isEnableSpeech == false {
         stopSpeak()
-        speechTexts = []
       }
     }
   }
@@ -70,6 +68,7 @@ class ViewModel: NSObject, ObservableObject {
     setPlaybackMode()
     self.selectedVoice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) ?? AVSpeechSynthesisVoice(language: "en-US")
     synthesizer.delegate = self
+    speechOperationQueue.maxConcurrentOperationCount = 1
   }
 
   // MARK: - Request Open API
@@ -152,32 +151,18 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
   func addToQueue(_ text: String) {
     guard isEnableSpeech else { return }
 
-    speechQueueDispatch.async {
-      self.speechTexts.append(text)
-      if !self.synthesizer.isSpeaking {
-        self.speakNext()
-      }
-    }
-  }
-
-  func speakNext() {
-    speechQueueDispatch.async {
-      guard !self.speechTexts.isEmpty else {
-        self.deactivePlayback()
-        return
-      }
-      let text = self.speechTexts.removeFirst()
-      self.speak(text)
+    speechOperationQueue.addOperation { [weak self] in
+      self?.speak(text)
     }
   }
 
   func stopSpeak() {
     synthesizer.stopSpeaking(at: .immediate)
     deactivePlayback()
+    speechOperationQueue.cancelAllOperations()
   }
 
   func clearSpeak() {
-    speechTexts = []
     stopSpeak()
   }
 
@@ -214,7 +199,7 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
   }
 
   func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
-    print("synthesizer willSpeakRange")
+//    print("synthesizer willSpeakRange")
   }
 
   func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
@@ -228,10 +213,11 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
   func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
     print("synthesizer didFinish")
     // Speak the next utterance in the queue
-    speakNext()
+    deactivePlayback()
   }
 
   func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
     print("synthesizer didCancel")
+    deactivePlayback()
   }
 }
