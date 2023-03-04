@@ -51,6 +51,9 @@ struct ContentView: View {
             }
           }
         }
+        .onTapGesture {
+          isFocus = false
+        }
         .onChange(of: viewModel.scrollId) { newValue in
           if let newValue {
             withAnimation {
@@ -106,9 +109,6 @@ struct ContentView: View {
             viewModel.requestAI()
           }
           .focused($isFocus)
-          .onAppear {
-            isFocus = true
-          }
           .textFieldStyle(.roundedBorder)
           Button {
             isFocus = false
@@ -123,6 +123,9 @@ struct ContentView: View {
     .padding()
     .tint(.accent)
     .buttonStyle(.borderedProminent)
+    .task {
+      isFocus = true
+    }
   }
 
   var muteButton: some View {
