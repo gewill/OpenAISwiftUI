@@ -10,6 +10,8 @@
 		BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */; };
 		BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51152829B38F820065CAE8 /* LoadingView.swift */; };
 		BE51153129B3A9CE0065CAE8 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51153029B3A9CE0065CAE8 /* SetupView.swift */; };
+		BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */ = {isa = PBXBuildFile; productRef = BE56E92429B3BB6400A1D08E /* Glassfy */; };
+		BE56E92729B3C0E100A1D08E /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56E92629B3C0E100A1D08E /* TipView.swift */; };
 		BE67A58729B0ECED00BBAD4B /* OpenAISwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */; };
 		BE67A58929B0ECED00BBAD4B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A58829B0ECED00BBAD4B /* ChatView.swift */; };
 		BE67A58B29B0ECEE00BBAD4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */; };
@@ -24,6 +26,7 @@
 		BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		BE51152829B38F820065CAE8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BE51153029B3A9CE0065CAE8 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		BE56E92629B3C0E100A1D08E /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
 		BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenAISwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISwiftUIApp.swift; sourceTree = "<group>"; };
 		BE67A58829B0ECED00BBAD4B /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */,
 				BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +52,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE56E92829B3D91500A1D08E /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				BE51153029B3A9CE0065CAE8 /* SetupView.swift */,
+				BE67A58829B0ECED00BBAD4B /* ChatView.swift */,
+				BE67A59829B0ED2700BBAD4B /* ViewModel.swift */,
+				BE56E92629B3C0E100A1D08E /* TipView.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		BE56E92929B3D92400A1D08E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BE74560A29B1949100E09F7F /* VoicePicker.swift */,
+				BE51152829B38F820065CAE8 /* LoadingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BE56E92A29B3D92C00A1D08E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */,
+				BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		BE67A57A29B0ECED00BBAD4B = {
 			isa = PBXGroup;
 			children = (
@@ -71,13 +104,9 @@
 			children = (
 				BEA9467929B113BD005F8F93 /* Info.plist */,
 				BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */,
-				BE51153029B3A9CE0065CAE8 /* SetupView.swift */,
-				BE67A58829B0ECED00BBAD4B /* ChatView.swift */,
-				BE67A59829B0ED2700BBAD4B /* ViewModel.swift */,
-				BE74560A29B1949100E09F7F /* VoicePicker.swift */,
-				BE51152829B38F820065CAE8 /* LoadingView.swift */,
-				BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */,
-				BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */,
+				BE56E92829B3D91500A1D08E /* Scene */,
+				BE56E92929B3D92400A1D08E /* View */,
+				BE56E92A29B3D92C00A1D08E /* Extension */,
 				BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */,
 				BE67A58C29B0ECEE00BBAD4B /* OpenAISwiftUI.entitlements */,
 				BE67A58D29B0ECEE00BBAD4B /* Preview Content */,
@@ -111,6 +140,7 @@
 			name = OpenAISwiftUI;
 			packageProductDependencies = (
 				BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */,
+				BE56E92429B3BB6400A1D08E /* Glassfy */,
 			);
 			productName = OpenAISwiftUI;
 			productReference = BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */;
@@ -142,6 +172,7 @@
 			mainGroup = BE67A57A29B0ECED00BBAD4B;
 			packageReferences = (
 				BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */,
+				BE56E92329B3BB6400A1D08E /* XCRemoteSwiftPackageReference "ios-sdk" */,
 			);
 			productRefGroup = BE67A58429B0ECED00BBAD4B /* Products */;
 			projectDirPath = "";
@@ -177,6 +208,7 @@
 				BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */,
 				BE51153129B3A9CE0065CAE8 /* SetupView.swift in Sources */,
 				BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */,
+				BE56E92729B3C0E100A1D08E /* TipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +430,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BE56E92329B3BB6400A1D08E /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/glassfy/ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/alfianlosari/ChatGPTSwift";
@@ -409,6 +449,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BE56E92429B3BB6400A1D08E /* Glassfy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE56E92329B3BB6400A1D08E /* XCRemoteSwiftPackageReference "ios-sdk" */;
+			productName = Glassfy;
+		};
 		BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */;

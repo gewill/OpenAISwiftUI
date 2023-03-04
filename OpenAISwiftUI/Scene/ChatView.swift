@@ -11,6 +11,7 @@ struct ChatView: View {
   @AppStorage("hasApiKey") var hasApiKey: Bool = false
   @ObservedObject var viewModel = ViewModel()
   @FocusState var isFocus: Bool
+  @State var isPresentedTipView: Bool = false
 
   // MARK: - life cycle
 
@@ -81,16 +82,24 @@ struct ChatView: View {
             }
           }
           Button {
+            hasApiKey = false
+          } label: {
+            Image(systemName: "gear")
+          }
+          Button {
+            isPresentedTipView.toggle()
+          } label: {
+            Image(systemName: "cup.and.saucer")
+          }
+          .sheet(isPresented: $isPresentedTipView) {
+            TipView(isPresented: $isPresentedTipView)
+          }
+          Button {
             viewModel.clearMessages()
           } label: {
             Image(systemName: "trash.circle.fill")
           }
           .tint(.pink)
-          Button {
-            hasApiKey = false
-          } label: {
-            Image(systemName: "gear")
-          }
           if viewModel.showMoreOptions == false {
             muteButton
           }
