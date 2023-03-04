@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */; };
+		BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51152829B38F820065CAE8 /* LoadingView.swift */; };
 		BE67A58729B0ECED00BBAD4B /* OpenAISwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */; };
 		BE67A58929B0ECED00BBAD4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A58829B0ECED00BBAD4B /* ContentView.swift */; };
 		BE67A58B29B0ECEE00BBAD4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		BE51152829B38F820065CAE8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenAISwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISwiftUIApp.swift; sourceTree = "<group>"; };
 		BE67A58829B0ECED00BBAD4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				BE67A58829B0ECED00BBAD4B /* ContentView.swift */,
 				BE67A59829B0ED2700BBAD4B /* ViewModel.swift */,
 				BE74560A29B1949100E09F7F /* VoicePicker.swift */,
+				BE51152829B38F820065CAE8 /* LoadingView.swift */,
 				BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */,
 				BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */,
 				BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */,
@@ -168,6 +171,7 @@
 				BE67A58929B0ECED00BBAD4B /* ContentView.swift in Sources */,
 				BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */,
 				BE67A58729B0ECED00BBAD4B /* OpenAISwiftUIApp.swift in Sources */,
+				BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */,
 				BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

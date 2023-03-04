@@ -36,8 +36,7 @@ struct ContentView: View {
                   Text(message.errorText)
                     .foregroundColor(Color.pink)
                   if message.isInteracting {
-                    ProgressView()
-                      .progressViewStyle(.circular)
+                    LoadingView()
                   }
                 }
                 Spacer()
