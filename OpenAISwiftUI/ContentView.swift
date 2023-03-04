@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+  @AppStorage("hasApiKey") var hasApiKey: Bool = false
   @ObservedObject var viewModel = ViewModel()
   @FocusState var isFocus: Bool
 
@@ -76,21 +77,17 @@ struct ContentView: View {
             Image(systemName: "trash.circle.fill")
           }
           .tint(.pink)
+          Button {
+            hasApiKey = false
+          } label: {
+            Image(systemName: "gear")
+          }
           if viewModel.showMoreOptions == false {
             muteButton
           }
           Spacer()
         }
         if viewModel.showMoreOptions {
-          VStack(alignment: .leading) {
-            HStack {
-              Text("You must input openai API key first.")
-              Link(destination: URL(string: "https://platform.openai.com/account/api-keys")!) {
-                Image(systemName: "questionmark.circle")
-              }
-            }
-            SecureField("API key", text: $viewModel.apiKey)
-          }
           HStack {
             VoicePicker(selectedVoice: $viewModel.selectedVoice)
             muteButton

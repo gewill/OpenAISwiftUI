@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct OpenAISwiftUIApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  @AppStorage("hasApiKey") var hasApiKey: Bool = false
+
+  var body: some Scene {
+    WindowGroup {
+      if hasApiKey {
+        ContentView()
+      } else {
+        SetupView()
+      }
     }
+  }
 }

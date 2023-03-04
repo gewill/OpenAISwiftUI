@@ -22,3 +22,14 @@ func copyToClipboard(text: String) {
   pasteBoard.setString(text, forType: .string)
   #endif
 }
+
+func getClipboard() -> String {
+  #if os(iOS)
+  return UIPasteboard.general.string ?? ""
+  #endif
+
+  #if os(macOS)
+  let pasteBoard = NSPasteboard.general
+  return pasteBoard.string
+  #endif
+}
