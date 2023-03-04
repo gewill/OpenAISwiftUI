@@ -19,7 +19,7 @@ struct ContentView: View {
         ScrollView {
           LazyVStack {
             ForEach(viewModel.messages) { message in
-              HStack(alignment: .top) {
+              HStack(alignment: .top, spacing: 6) {
                 VStack {
                   switch message.role {
                   case .user:
@@ -31,13 +31,14 @@ struct ContentView: View {
                   }
                 }
                 .font(.headline)
-                if message.status == .loading {
-                  ProgressView()
-                    .progressViewStyle(.circular)
-                    .padding(.horizontal)
-                } else {
-                  Text(message.text.trimmed)
-                    .foregroundColor(message.status == .error ? Color.pink : Color.primary)
+                VStack(alignment: .leading) {
+                  Text(message.text)
+                  Text(message.errorText)
+                    .foregroundColor(Color.pink)
+                  if message.isInteracting {
+                    ProgressView()
+                      .progressViewStyle(.circular)
+                  }
                 }
                 Spacer()
                 Button {
@@ -54,7 +55,7 @@ struct ContentView: View {
         .onChange(of: viewModel.scrollId) { newValue in
           if let newValue {
             withAnimation {
-              scrollViewReader.scrollTo(newValue, anchor: .top)
+              scrollViewReader.scrollTo(newValue)
             }
           }
         }
@@ -73,6 +74,9 @@ struct ContentView: View {
             Image(systemName: "trash.circle.fill")
           }
           .tint(.pink)
+          if viewModel.showMoreOptions == false {
+            muteButton
+          }
           Spacer()
         }
         if viewModel.showMoreOptions {
@@ -87,16 +91,7 @@ struct ContentView: View {
           }
           HStack {
             VoicePicker(selectedVoice: $viewModel.selectedVoice)
-            Button {
-              viewModel.isEnableSpeech.toggle()
-            } label: {
-              if viewModel.isEnableSpeech {
-                Image(systemName: "speaker.wave.2.circle.fill")
-              } else {
-                Image(systemName: "speaker.slash.circle.fill")
-              }
-            }
-            .tint(viewModel.isEnableSpeech ? Color.green : Color.pink)
+            muteButton
           }
         }
         HStack {
@@ -129,6 +124,19 @@ struct ContentView: View {
     .padding()
     .tint(.accent)
     .buttonStyle(.borderedProminent)
+  }
+
+  var muteButton: some View {
+    Button {
+      viewModel.isEnableSpeech.toggle()
+    } label: {
+      if viewModel.isEnableSpeech {
+        Image(systemName: "speaker.wave.2.circle.fill")
+      } else {
+        Image(systemName: "speaker.slash.circle.fill")
+      }
+    }
+    .tint(viewModel.isEnableSpeech ? Color.green : Color.pink)
   }
 }
 

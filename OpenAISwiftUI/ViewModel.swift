@@ -14,14 +14,12 @@ struct Message: Identifiable {
     case user, system
   }
 
-  enum Status: String {
-    case loading, success, error
-  }
-
   let id: UUID = .init()
   let role: Role
-  let text: String
-  var status: Status
+  var text: String
+
+  var isInteracting: Bool
+  var errorText: String
 }
 
 class ViewModel: NSObject, ObservableObject {
@@ -82,55 +80,61 @@ class ViewModel: NSObject, ObservableObject {
       showErrorMessage(text: "Prompt can't be empty.")
       return
     }
-    isLoading = true
 
     let prompt = self.prompt
     self.prompt = ""
 
-    Task.detached {
-      do {
-        let response = try await self.openAI.sendMessage(text: prompt)
-        await self.updateMessages(to: [Message(role: .system, text: response, status: .success)])
-      } catch {
-        await self.updateMessages(to: [Message(role: .system, text: error.localizedDescription + self.errorMessage, status: .error)])
-      }
+    Task {
+      await send(text: prompt)
     }
-
-    let promptMessage = Message(role: .user, text: prompt, status: .success)
-    messages.append(promptMessage)
-    messages.append(Message(role: .system, text: "", status: .loading))
-    scrollId = promptMessage.id
-  }
-
-  @MainActor
-  func updateMessages(to messages: [Message]) {
-    if let last = self.messages.last,
-       last.status == .loading
-    {
-      self.messages.removeLast()
-    }
-    self.messages += messages
-    scrollId = messages.last?.id
-    isLoading = false
-    messages.forEach {
-      if $0.role == .system {
-        addToQueue($0.text)
-      }
-    }
-  }
-
-  func showErrorMessage(text: String) {
-    let message = Message(role: .system, text: text, status: .error)
-    messages.append(message)
-    scrollId = message.id
-    addToQueue(text)
   }
 
   func clearMessages() {
-    messages = []
+    withAnimation { [weak self] in
+      self?.messages = []
+    }
     clearSpeak()
     openAI.deleteHistoryList()
     openAI = .init(apiKey: apiKey)
+  }
+
+  // MARK: - private methods
+
+  @MainActor
+  private func send(text: String) async {
+    isLoading = true
+
+    let promptMessage = Message(role: .user, text: text, isInteracting: false, errorText: "")
+    messages.append(promptMessage)
+    scrollId = promptMessage.id
+
+    var streamText = ""
+    var message = Message(role: .system, text: "", isInteracting: true, errorText: "")
+    messages.append(message)
+
+    do {
+      let stream = try await openAI.sendMessageStream(text: text)
+      for try await text in stream {
+        streamText += text
+        message.text = streamText.trimmed
+        messages[messages.count - 1] = message
+      }
+    } catch {
+      message = Message(role: .system, text: "", isInteracting: false, errorText: error.localizedDescription + errorMessage)
+    }
+
+    message.isInteracting = false
+    messages[messages.count - 1] = message
+    isLoading = false
+    scrollId = message.id
+    addToQueue(message.text + message.errorText)
+  }
+
+  private func showErrorMessage(text: String) {
+    let message = Message(role: .system, text: "", isInteracting: false, errorText: text)
+    messages.append(message)
+    scrollId = message.id
+    addToQueue(text)
   }
 }
 
