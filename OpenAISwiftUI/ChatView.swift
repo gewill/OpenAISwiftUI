@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ChatView.swift
 //  OpenAISwiftUI
 //
 //  Created by will on 02/03/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ChatView: View {
   @AppStorage("hasApiKey") var hasApiKey: Bool = false
   @ObservedObject var viewModel = ViewModel()
   @FocusState var isFocus: Bool
@@ -150,6 +150,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    ChatView()
   }
 }

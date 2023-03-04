@@ -14,7 +14,7 @@ struct OpenAISwiftUIApp: App {
   var body: some Scene {
     WindowGroup {
       if hasApiKey {
-        ContentView()
+        ChatView()
       } else {
         SetupView()
       }

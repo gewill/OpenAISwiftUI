@@ -11,7 +11,7 @@
 		BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51152829B38F820065CAE8 /* LoadingView.swift */; };
 		BE51153129B3A9CE0065CAE8 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51153029B3A9CE0065CAE8 /* SetupView.swift */; };
 		BE67A58729B0ECED00BBAD4B /* OpenAISwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */; };
-		BE67A58929B0ECED00BBAD4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A58829B0ECED00BBAD4B /* ContentView.swift */; };
+		BE67A58929B0ECED00BBAD4B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A58829B0ECED00BBAD4B /* ChatView.swift */; };
 		BE67A58B29B0ECEE00BBAD4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */; };
 		BE67A58F29B0ECEE00BBAD4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67A58E29B0ECEE00BBAD4B /* Preview Assets.xcassets */; };
 		BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59829B0ED2700BBAD4B /* ViewModel.swift */; };
@@ -26,7 +26,7 @@
 		BE51153029B3A9CE0065CAE8 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenAISwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISwiftUIApp.swift; sourceTree = "<group>"; };
-		BE67A58829B0ECED00BBAD4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BE67A58829B0ECED00BBAD4B /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE67A58C29B0ECEE00BBAD4B /* OpenAISwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenAISwiftUI.entitlements; sourceTree = "<group>"; };
 		BE67A58E29B0ECEE00BBAD4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 				BEA9467929B113BD005F8F93 /* Info.plist */,
 				BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */,
 				BE51153029B3A9CE0065CAE8 /* SetupView.swift */,
-				BE67A58829B0ECED00BBAD4B /* ContentView.swift */,
+				BE67A58829B0ECED00BBAD4B /* ChatView.swift */,
 				BE67A59829B0ED2700BBAD4B /* ViewModel.swift */,
 				BE74560A29B1949100E09F7F /* VoicePicker.swift */,
 				BE51152829B38F820065CAE8 /* LoadingView.swift */,
@@ -171,7 +171,7 @@
 			files = (
 				BE74560B29B1949100E09F7F /* VoicePicker.swift in Sources */,
 				BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */,
-				BE67A58929B0ECED00BBAD4B /* ContentView.swift in Sources */,
+				BE67A58929B0ECED00BBAD4B /* ChatView.swift in Sources */,
 				BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */,
 				BE67A58729B0ECED00BBAD4B /* OpenAISwiftUIApp.swift in Sources */,
 				BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */,
