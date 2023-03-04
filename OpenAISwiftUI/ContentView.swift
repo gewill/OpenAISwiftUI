@@ -63,13 +63,22 @@ struct ContentView: View {
           }
         }
       }
-      VStack {
+      VStack(alignment: .leading) {
         HStack {
-          Button {
-            viewModel.showMoreOptions.toggle()
-          } label: {
-            Image(systemName: viewModel.showMoreOptions ? "chevron.compact.down" : "chevron.compact.up")
-              .padding(.vertical, 6)
+          if viewModel.showMoreOptions {
+            Button {
+              viewModel.showMoreOptions.toggle()
+            } label: {
+              Image(systemName: "chevron.compact.down")
+                .padding(.vertical, 6)
+            }
+          } else {
+            Button {
+              viewModel.showMoreOptions.toggle()
+            } label: {
+              Image(systemName: "chevron.compact.up")
+                .padding(.vertical, 6)
+            }
           }
           Button {
             viewModel.clearMessages()

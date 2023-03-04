@@ -29,8 +29,9 @@ struct SetupView: View {
         TextField("API key", text: $apiKey)
           .textFieldStyle(.roundedBorder)
         Button {
-          let string = getClipboard()
-          if string.isEmpty == false {
+          if let string = getClipboardString(),
+             string.isEmpty == false
+          {
             apiKey = string
           }
         } label: {
@@ -47,7 +48,7 @@ struct SetupView: View {
           }
         } label: {
           Text("Submit")
-            .font(.title)
+            .font(.headline)
         }
         .buttonStyle(.borderedProminent)
         Spacer()
