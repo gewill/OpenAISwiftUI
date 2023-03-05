@@ -22,6 +22,7 @@
 		BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */; };
 		BEB21FDE29B447DC006FAE96 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = BEB21FDD29B447DC006FAE96 /* RiveRuntime */; };
 		BEB21FED29B457BB006FAE96 /* buymeacoffee.riv in Resources */ = {isa = PBXBuildFile; fileRef = BEB21FEC29B457BB006FAE96 /* buymeacoffee.riv */; };
+		BEB21FF029B45988006FAE96 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BEB21FEF29B45988006FAE96 /* ConfettiSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 			files = (
 				BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */,
 				BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */,
+				BEB21FF029B45988006FAE96 /* ConfettiSwiftUI in Frameworks */,
 				BEB21FDE29B447DC006FAE96 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +157,7 @@
 				BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */,
 				BE56E92429B3BB6400A1D08E /* Glassfy */,
 				BEB21FDD29B447DC006FAE96 /* RiveRuntime */,
+				BEB21FEF29B45988006FAE96 /* ConfettiSwiftUI */,
 			);
 			productName = OpenAISwiftUI;
 			productReference = BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */;
@@ -188,6 +191,7 @@
 				BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */,
 				BE56E92329B3BB6400A1D08E /* XCRemoteSwiftPackageReference "ios-sdk" */,
 				BEB21FDC29B447DC006FAE96 /* XCRemoteSwiftPackageReference "rive-ios" */,
+				BEB21FEE29B45988006FAE96 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = BE67A58429B0ECED00BBAD4B /* Products */;
 			projectDirPath = "";
@@ -470,6 +474,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		BEB21FEE29B45988006FAE96 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -487,6 +499,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BEB21FDC29B447DC006FAE96 /* XCRemoteSwiftPackageReference "rive-ios" */;
 			productName = RiveRuntime;
+		};
+		BEB21FEF29B45988006FAE96 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB21FEE29B45988006FAE96 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

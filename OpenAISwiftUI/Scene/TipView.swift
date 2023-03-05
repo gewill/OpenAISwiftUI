@@ -5,6 +5,7 @@
 //  Created by will on 05/03/2023.
 //
 
+import ConfettiSwiftUI
 import Glassfy
 import RiveRuntime
 import SwiftUI
@@ -21,6 +22,7 @@ struct TipView: View {
   @Binding var isPresented: Bool
   @State var isPay: Bool = false
   @State var skus: [Glassfy.Sku] = []
+  @State private var confettiCounter: Int = 0
 
   var body: some View {
     VStack {
@@ -41,6 +43,10 @@ struct TipView: View {
 
       if isPay {
         Text("Thanks for your support. 😊")
+        Button("🎉🎉🎉") {
+          confettiCounter += 1
+        }
+        .confettiCannon(counter: $confettiCounter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
       }
 
       ForEach(skus, id: \.skuId) { sku in
@@ -56,6 +62,7 @@ struct TipView: View {
               if t.permissions[Permission.coffee.rawValue]?.isValid == true {
                 print("Pay success")
                 self.isPay = true
+                confettiCounter += 1
               }
             }
           } label: {
