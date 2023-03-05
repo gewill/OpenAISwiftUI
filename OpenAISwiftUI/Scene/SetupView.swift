@@ -14,16 +14,18 @@ struct SetupView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 20.0) {
       Text("Hi, there").font(.title)
-      Text("To proceed, an active OpenAI account is required.").font(.headline)
+      Text("Welcome to VoiceAI Chat")
+      Text("an [open source](https://github.com/gewill/OpenAISwiftUI) chat app that uses voice to AI.")
       Divider()
 
-      Text("Follow these steps:")
-      Text("1. Visit ")
-      Link(destination: URL(string: "https://platform.openai.com/account/api-keys")!) {
-        Text("https://platform.openai.com/account/api-keys")
+      Group {
+        Text("To proceed, an active OpenAI account is required.").font(.headline)
+
+        Text("Follow these steps:")
+        Text("1. Visit [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)")
+        Text("2. Click \"Create new secret key\" button")
+        Text("3. Copy and paste the generated API key.")
       }
-      Text("2. Click \"Create new secret key\" button")
-      Text("3. Copy and paste the generated API key.")
 
       HStack {
         TextField("API key", text: $apiKey)
@@ -55,6 +57,7 @@ struct SetupView: View {
       }
     }
     .padding()
+    .tint(.accent)
   }
 }
 
