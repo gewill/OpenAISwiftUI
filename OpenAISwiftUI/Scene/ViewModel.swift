@@ -118,14 +118,18 @@ class ViewModel: NSObject, ObservableObject {
       for try await text in stream {
         streamText += text
         message.text = streamText.trimmed
-        messages[messages.count - 1] = message
+        if messages.isEmpty == false {
+          messages[messages.count - 1] = message
+        }
       }
     } catch {
       message = Message(role: .system, text: "", isInteracting: false, errorText: error.localizedDescription + errorMessage)
     }
 
     message.isInteracting = false
-    messages[messages.count - 1] = message
+    if messages.isEmpty == false {
+      messages[messages.count - 1] = message
+    }
     isLoading = false
     addToQueue(message.text + message.errorText)
   }
