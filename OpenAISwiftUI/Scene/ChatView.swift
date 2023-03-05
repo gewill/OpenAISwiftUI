@@ -182,6 +182,7 @@ struct ChatView: View {
       if viewModel.isRecording {
         viewModel.stopSpeechRecognizer()
       } else {
+        isFocus = false
         viewModel.startSpeechRecognizer()
       }
     }
