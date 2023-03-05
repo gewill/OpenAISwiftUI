@@ -160,25 +160,24 @@ struct ChatView: View {
 
   var micButton: some View {
     ZStack {
-      Group {
-        Circle()
-          .foregroundColor(Color.red.opacity(0.3))
-          .frame(width: 40, height: 40)
-          .scaleEffect(animateMicCircle ? 0.9 : 1.1)
-          .animation(Animation.easeInOut(duration: 0.4).repeatForever(autoreverses: false), value: animateMicCircle)
-          .onAppear {
-            self.animateMicCircle.toggle()
-          }
-        Circle()
-          .frame(width: 30, height: 30)
-          .foregroundColor(.red)
-      }
-      .opacity(viewModel.isRecording ? 1 : 0)
+      Circle()
+        .foregroundColor(Color.red.opacity(0.3))
+        .frame(width: 50, height: 50)
+        .scaleEffect(animateMicCircle ? 0.9 : 1.2)
+        .animation(Animation.easeInOut(duration: 0.4).repeatForever(autoreverses: false), value: animateMicCircle)
+        .onAppear {
+          self.animateMicCircle.toggle()
+        }
+        .opacity(viewModel.isRecording ? 1 : 0)
+      
+      Circle()
+        .frame(width: 40, height: 40)
+        .foregroundColor(viewModel.isRecording ? .red : .accent)
 
-      Image(systemName: "mic")
+      Image(systemName: "mic").foregroundColor(.white)
     }
     .contentShape(Rectangle())
-    .frame(width: 60, height: 40)
+    .frame(width: 60, height: 50)
     .onTapGesture {
       if viewModel.isRecording {
         viewModel.stopSpeechRecognizer()
