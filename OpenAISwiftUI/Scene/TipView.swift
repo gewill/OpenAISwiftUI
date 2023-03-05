@@ -35,25 +35,32 @@ struct TipView: View {
         }
         .buttonStyle(.borderedProminent)
       }
-      Text("Enjoy VoiceAI Chat?").font(.title)
 
       RiveViewModel(fileName: "buymeacoffee")
         .view()
         .frame(width: 200, height: 200)
+
+      Text("Hey, if you enjoy this app, please buy me a coffee.")
+        .font(.headline)
 
       if isPay {
         Text("Thanks for your support. 😊")
         Button("🎉🎉🎉") {
           confettiCounter += 1
         }
+        .onAppear {
+          confettiCounter += 1
+        }
         .confettiCannon(counter: $confettiCounter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
       }
+
+      Divider()
 
       ForEach(skus, id: \.skuId) { sku in
         VStack {
           Text(sku.product.localizedTitle)
             .font(.headline)
-          Text(sku.product.localizedDescription)
+          // Text(sku.product.localizedDescription)
           Button {
             Glassfy.purchase(sku: sku) { transaction, error in
               guard let t = transaction, error == nil else {
@@ -80,6 +87,11 @@ struct TipView: View {
       Glassfy.offerings { offers, _ in
         if let offering = offers?[Offering.coffee.rawValue] {
           skus = offering.skus
+        }
+      }
+      Glassfy.permissions { permissions, _ in
+        if permissions?[Permission.coffee.rawValue]?.isValid == true {
+          self.isPay = true
         }
       }
     }
