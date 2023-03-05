@@ -28,12 +28,21 @@
       }
     },
     {
-      "identity" : "rive-ios",
+      "identity" : "lottie-spm",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/rive-app/rive-ios.git",
+      "location" : "https://github.com/airbnb/lottie-spm.git",
       "state" : {
-        "revision" : "58b926cf1935222919d057f8ea5df1cc386e6e38",
-        "version" : "3.1.7"
+        "revision" : "c3852816c622ad35a03ed39c187c1644ece2382b",
+        "version" : "4.1.3"
+      }
+    },
+    {
+      "identity" : "lottieui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tfmart/LottieUI",
+      "state" : {
+        "revision" : "dd5b2f16213f89ab996a55fc2f51b56236da4bbe",
+        "version" : "1.3.3"
       }
     }
   ],

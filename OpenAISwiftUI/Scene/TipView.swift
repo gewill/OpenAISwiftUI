@@ -7,7 +7,8 @@
 
 import ConfettiSwiftUI
 import Glassfy
-import RiveRuntime
+import Lottie
+import LottieUI
 import SwiftUI
 
 struct TipView: View {
@@ -35,54 +36,55 @@ struct TipView: View {
         }
         .buttonStyle(.borderedProminent)
       }
+      ScrollView {
+        LottieView(LottieFiles.buyMeACoffee)
+          .loopMode(LottieLoopMode.loop)
+          .frame(width: 200, height: 200)
 
-      RiveViewModel(fileName: "buymeacoffee")
-        .view()
-        .frame(width: 200, height: 200)
+        Text("Hey, if you enjoy this app, please buy me a coffee.")
+          .font(.headline)
+          .lineLimit(nil)
 
-      Text("Hey, if you enjoy this app, please buy me a coffee.")
-        .font(.headline)
-
-      if isPay {
-        Text("Thanks for your support. 😊")
-        Button("🎉🎉🎉") {
-          confettiCounter += 1
-        }
-        .onAppear {
-          confettiCounter += 1
-        }
-        .confettiCannon(counter: $confettiCounter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
-      }
-
-      Divider()
-
-      ForEach(skus, id: \.skuId) { sku in
-        VStack {
-          Text(sku.product.localizedTitle)
-            .font(.headline)
-          // Text(sku.product.localizedDescription)
-          Button {
-            Glassfy.purchase(sku: sku) { transaction, error in
-              guard let t = transaction, error == nil else {
-                return
-              }
-              if t.permissions[Permission.coffee.rawValue]?.isValid == true {
-                print("Pay success")
-                self.isPay = true
-                confettiCounter += 1
-              }
-            }
-          } label: {
-            Text("Support \(sku.product.priceLocale.currencySymbol ?? "")\(sku.product.price)")
+        if isPay {
+          Text("Thanks for your support. 😊")
+          Button("🎉🎉🎉") {
+            confettiCounter += 1
           }
-          .buttonStyle(.borderedProminent)
+          .onAppear {
+            confettiCounter += 1
+          }
+          .confettiCannon(counter: $confettiCounter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
+        }
+
+        Divider()
+
+        ForEach(skus, id: \.skuId) { sku in
+          VStack {
+            Text(sku.product.localizedTitle)
+              .font(.headline)
+            // Text(sku.product.localizedDescription)
+            Button {
+              Glassfy.purchase(sku: sku) { transaction, error in
+                guard let t = transaction, error == nil else {
+                  return
+                }
+                if t.permissions[Permission.coffee.rawValue]?.isValid == true {
+                  print("Pay success")
+                  self.isPay = true
+                  confettiCounter += 1
+                }
+              }
+            } label: {
+              Text("Support \(sku.product.priceLocale.currencySymbol ?? "")\(sku.product.price)")
+            }
+            .buttonStyle(.borderedProminent)
+          }
         }
       }
-
       Spacer()
     }
     .padding()
-    .frame(minWidth: 300, minHeight: 300)
+    .frame(minWidth: 300, idealWidth: 500, minHeight: 400, idealHeight: 500)
     .task {
       Glassfy.offerings { offers, _ in
         if let offering = offers?[Offering.coffee.rawValue] {

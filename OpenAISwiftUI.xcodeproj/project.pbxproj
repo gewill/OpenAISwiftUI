@@ -20,9 +20,11 @@
 		BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */; };
 		BE74560B29B1949100E09F7F /* VoicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE74560A29B1949100E09F7F /* VoicePicker.swift */; };
 		BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */; };
-		BEB21FDE29B447DC006FAE96 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = BEB21FDD29B447DC006FAE96 /* RiveRuntime */; };
-		BEB21FED29B457BB006FAE96 /* buymeacoffee.riv in Resources */ = {isa = PBXBuildFile; fileRef = BEB21FEC29B457BB006FAE96 /* buymeacoffee.riv */; };
 		BEB21FF029B45988006FAE96 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BEB21FEF29B45988006FAE96 /* ConfettiSwiftUI */; };
+		BEB21FF429B4652E006FAE96 /* buymeacoffee.json in Resources */ = {isa = PBXBuildFile; fileRef = BEB21FF329B4652E006FAE96 /* buymeacoffee.json */; };
+		BEB21FF729B465BC006FAE96 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BEB21FF629B465BC006FAE96 /* Lottie */; };
+		BEB21FFA29B465D7006FAE96 /* LottieUI in Frameworks */ = {isa = PBXBuildFile; productRef = BEB21FF929B465D7006FAE96 /* LottieUI */; };
+		BEB21FFE29B465FD006FAE96 /* LottieFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB21FFC29B465FD006FAE96 /* LottieFiles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +42,8 @@
 		BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		BE74560A29B1949100E09F7F /* VoicePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicePicker.swift; sourceTree = "<group>"; };
 		BEA9467929B113BD005F8F93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BEB21FEC29B457BB006FAE96 /* buymeacoffee.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = buymeacoffee.riv; sourceTree = "<group>"; };
+		BEB21FF329B4652E006FAE96 /* buymeacoffee.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buymeacoffee.json; sourceTree = "<group>"; };
+		BEB21FFC29B465FD006FAE96 /* LottieFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieFiles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +54,8 @@
 				BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */,
 				BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */,
 				BEB21FF029B45988006FAE96 /* ConfettiSwiftUI in Frameworks */,
-				BEB21FDE29B447DC006FAE96 /* RiveRuntime in Frameworks */,
+				BEB21FFA29B465D7006FAE96 /* LottieUI in Frameworks */,
+				BEB21FF729B465BC006FAE96 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +117,7 @@
 				BE56E92829B3D91500A1D08E /* Scene */,
 				BE56E92929B3D92400A1D08E /* View */,
 				BE56E92A29B3D92C00A1D08E /* Extension */,
-				BEB21FE329B44A1B006FAE96 /* RiveFiles */,
+				BEB21FFB29B465FD006FAE96 /* LottieFiles */,
 				BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */,
 				BE67A58C29B0ECEE00BBAD4B /* OpenAISwiftUI.entitlements */,
 				BE67A58D29B0ECEE00BBAD4B /* Preview Content */,
@@ -129,12 +133,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		BEB21FE329B44A1B006FAE96 /* RiveFiles */ = {
+		BEB21FFB29B465FD006FAE96 /* LottieFiles */ = {
 			isa = PBXGroup;
 			children = (
-				BEB21FEC29B457BB006FAE96 /* buymeacoffee.riv */,
+				BEB21FFC29B465FD006FAE96 /* LottieFiles.swift */,
+				BEB21FF329B4652E006FAE96 /* buymeacoffee.json */,
 			);
-			path = RiveFiles;
+			path = LottieFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +161,9 @@
 			packageProductDependencies = (
 				BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */,
 				BE56E92429B3BB6400A1D08E /* Glassfy */,
-				BEB21FDD29B447DC006FAE96 /* RiveRuntime */,
 				BEB21FEF29B45988006FAE96 /* ConfettiSwiftUI */,
+				BEB21FF629B465BC006FAE96 /* Lottie */,
+				BEB21FF929B465D7006FAE96 /* LottieUI */,
 			);
 			productName = OpenAISwiftUI;
 			productReference = BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */;
@@ -190,8 +196,9 @@
 			packageReferences = (
 				BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */,
 				BE56E92329B3BB6400A1D08E /* XCRemoteSwiftPackageReference "ios-sdk" */,
-				BEB21FDC29B447DC006FAE96 /* XCRemoteSwiftPackageReference "rive-ios" */,
 				BEB21FEE29B45988006FAE96 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				BEB21FF529B465BC006FAE96 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				BEB21FF829B465D7006FAE96 /* XCRemoteSwiftPackageReference "LottieUI" */,
 			);
 			productRefGroup = BE67A58429B0ECED00BBAD4B /* Products */;
 			projectDirPath = "";
@@ -209,7 +216,7 @@
 			files = (
 				BE67A58F29B0ECEE00BBAD4B /* Preview Assets.xcassets in Resources */,
 				BE67A58B29B0ECEE00BBAD4B /* Assets.xcassets in Resources */,
-				BEB21FED29B457BB006FAE96 /* buymeacoffee.riv in Resources */,
+				BEB21FF429B4652E006FAE96 /* buymeacoffee.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +231,7 @@
 				BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */,
 				BE67A58929B0ECED00BBAD4B /* ChatView.swift in Sources */,
 				BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */,
+				BEB21FFE29B465FD006FAE96 /* LottieFiles.swift in Sources */,
 				BE67A58729B0ECED00BBAD4B /* OpenAISwiftUIApp.swift in Sources */,
 				BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */,
 				BE51153129B3A9CE0065CAE8 /* SetupView.swift in Sources */,
@@ -466,17 +474,25 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		BEB21FDC29B447DC006FAE96 /* XCRemoteSwiftPackageReference "rive-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rive-app/rive-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 		BEB21FEE29B45988006FAE96 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		BEB21FF529B465BC006FAE96 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		BEB21FF829B465D7006FAE96 /* XCRemoteSwiftPackageReference "LottieUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tfmart/LottieUI";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -495,15 +511,20 @@
 			package = BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */;
 			productName = ChatGPTSwift;
 		};
-		BEB21FDD29B447DC006FAE96 /* RiveRuntime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BEB21FDC29B447DC006FAE96 /* XCRemoteSwiftPackageReference "rive-ios" */;
-			productName = RiveRuntime;
-		};
 		BEB21FEF29B45988006FAE96 /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BEB21FEE29B45988006FAE96 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
+		};
+		BEB21FF629B465BC006FAE96 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB21FF529B465BC006FAE96 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+		BEB21FF929B465D7006FAE96 /* LottieUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB21FF829B465D7006FAE96 /* XCRemoteSwiftPackageReference "LottieUI" */;
+			productName = LottieUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
