@@ -56,12 +56,11 @@ struct ChatView: View {
         .onTapGesture {
           isFocus = false
         }
-        .onChange(of: viewModel.scrollId) { newValue in
-          if let newValue {
-            withAnimation {
-              scrollViewReader.scrollTo(newValue)
-            }
-          }
+        .onChange(of: viewModel.messages.last?.text) { _ in
+          scrollToBottom(proxy: scrollViewReader)
+        }
+        .onChange(of: viewModel.messages.last?.errorText) { _ in
+          scrollToBottom(proxy: scrollViewReader)
         }
       }
       VStack(alignment: .leading) {
@@ -154,6 +153,12 @@ struct ChatView: View {
       }
     }
     .tint(viewModel.isEnableSpeech ? Color.green : Color.pink)
+  }
+  
+  // MARK: - private methods
+  private func scrollToBottom(proxy: ScrollViewProxy) {
+      guard let id = viewModel.messages.last?.id else { return }
+      proxy.scrollTo(id, anchor: .bottomTrailing)
   }
 }
 

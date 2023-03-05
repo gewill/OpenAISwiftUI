@@ -30,7 +30,6 @@ class ViewModel: NSObject, ObservableObject {
 
   @Published var prompt: String = ""
   @Published var messages: [Message] = []
-  @Published var scrollId: UUID?
   @Published var isLoading: Bool = false
   @AppStorage("showMoreOptions") var showMoreOptions: Bool = true
 
@@ -84,6 +83,9 @@ class ViewModel: NSObject, ObservableObject {
     let prompt = self.prompt
     self.prompt = ""
 
+    let promptMessage = Message(role: .user, text: prompt, isInteracting: false, errorText: "")
+    messages.append(promptMessage)
+
     Task {
       await send(text: prompt)
     }
@@ -104,10 +106,6 @@ class ViewModel: NSObject, ObservableObject {
   private func send(text: String) async {
     isLoading = true
 
-    let promptMessage = Message(role: .user, text: text, isInteracting: false, errorText: "")
-    messages.append(promptMessage)
-    scrollId = promptMessage.id
-
     var streamText = ""
     var message = Message(role: .system, text: "", isInteracting: true, errorText: "")
     messages.append(message)
@@ -126,14 +124,12 @@ class ViewModel: NSObject, ObservableObject {
     message.isInteracting = false
     messages[messages.count - 1] = message
     isLoading = false
-    scrollId = message.id
     addToQueue(message.text + message.errorText)
   }
 
   private func showErrorMessage(text: String) {
     let message = Message(role: .system, text: "", isInteracting: false, errorText: text)
     messages.append(message)
-    scrollId = message.id
     addToQueue(text)
   }
 }
