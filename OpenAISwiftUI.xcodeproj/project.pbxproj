@@ -20,6 +20,8 @@
 		BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */; };
 		BE74560B29B1949100E09F7F /* VoicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE74560A29B1949100E09F7F /* VoicePicker.swift */; };
 		BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */; };
+		BEB21FDE29B447DC006FAE96 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = BEB21FDD29B447DC006FAE96 /* RiveRuntime */; };
+		BEB21FED29B457BB006FAE96 /* buymeacoffee.riv in Resources */ = {isa = PBXBuildFile; fileRef = BEB21FEC29B457BB006FAE96 /* buymeacoffee.riv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,7 @@
 		BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		BE74560A29B1949100E09F7F /* VoicePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicePicker.swift; sourceTree = "<group>"; };
 		BEA9467929B113BD005F8F93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BEB21FEC29B457BB006FAE96 /* buymeacoffee.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = buymeacoffee.riv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +49,7 @@
 			files = (
 				BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */,
 				BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */,
+				BEB21FDE29B447DC006FAE96 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +111,7 @@
 				BE56E92829B3D91500A1D08E /* Scene */,
 				BE56E92929B3D92400A1D08E /* View */,
 				BE56E92A29B3D92C00A1D08E /* Extension */,
+				BEB21FE329B44A1B006FAE96 /* RiveFiles */,
 				BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */,
 				BE67A58C29B0ECEE00BBAD4B /* OpenAISwiftUI.entitlements */,
 				BE67A58D29B0ECEE00BBAD4B /* Preview Content */,
@@ -120,6 +125,14 @@
 				BE67A58E29B0ECEE00BBAD4B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BEB21FE329B44A1B006FAE96 /* RiveFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BEB21FEC29B457BB006FAE96 /* buymeacoffee.riv */,
+			);
+			path = RiveFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +154,7 @@
 			packageProductDependencies = (
 				BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */,
 				BE56E92429B3BB6400A1D08E /* Glassfy */,
+				BEB21FDD29B447DC006FAE96 /* RiveRuntime */,
 			);
 			productName = OpenAISwiftUI;
 			productReference = BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */;
@@ -173,6 +187,7 @@
 			packageReferences = (
 				BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */,
 				BE56E92329B3BB6400A1D08E /* XCRemoteSwiftPackageReference "ios-sdk" */,
+				BEB21FDC29B447DC006FAE96 /* XCRemoteSwiftPackageReference "rive-ios" */,
 			);
 			productRefGroup = BE67A58429B0ECED00BBAD4B /* Products */;
 			projectDirPath = "";
@@ -190,6 +205,7 @@
 			files = (
 				BE67A58F29B0ECEE00BBAD4B /* Preview Assets.xcassets in Resources */,
 				BE67A58B29B0ECEE00BBAD4B /* Assets.xcassets in Resources */,
+				BEB21FED29B457BB006FAE96 /* buymeacoffee.riv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +462,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		BEB21FDC29B447DC006FAE96 /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -458,6 +482,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */;
 			productName = ChatGPTSwift;
+		};
+		BEB21FDD29B447DC006FAE96 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB21FDC29B447DC006FAE96 /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

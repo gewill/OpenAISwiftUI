@@ -6,6 +6,7 @@
 //
 
 import Glassfy
+import RiveRuntime
 import SwiftUI
 
 struct TipView: View {
@@ -23,23 +24,24 @@ struct TipView: View {
 
   var body: some View {
     VStack {
-      ZStack {
-        Text("Enjoy VoiceAI Chat?").font(.title)
-        HStack {
-          Spacer()
-          Button {
-            isPresented.toggle()
-          } label: {
-            Image(systemName: "xmark")
-          }
-          .buttonStyle(.borderedProminent)
+      HStack {
+        Spacer()
+        Button {
+          isPresented.toggle()
+        } label: {
+          Image(systemName: "xmark")
         }
+        .buttonStyle(.borderedProminent)
       }
-      Divider()
+      Text("Enjoy VoiceAI Chat?").font(.title)
+
+      RiveViewModel(fileName: "buymeacoffee")
+        .view()
+        .frame(width: 200, height: 200)
+
       if isPay {
         Text("Thanks for your support. 😊")
       }
-      Spacer()
 
       ForEach(skus, id: \.skuId) { sku in
         VStack {
