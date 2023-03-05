@@ -140,9 +140,6 @@ struct ChatView: View {
     .padding()
     .tint(.accent)
     .buttonStyle(.borderedProminent)
-    .task {
-      isFocus = true
-    }
   }
 
   var muteButton: some View {
