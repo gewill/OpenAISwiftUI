@@ -12,6 +12,7 @@ struct ChatView: View {
   @ObservedObject var viewModel = ViewModel()
   @FocusState var isFocus: Bool
   @State var isPresentedTipView: Bool = false
+  @State private var animateMicCircle = false
 
   // MARK: - life cycle
 
@@ -110,7 +111,9 @@ struct ChatView: View {
             muteButton
           }
         }
+
         HStack {
+          micButton
           Group {
             if #available(iOS 16.0, macOS 13.0, *) {
               TextField("prompt", text: $viewModel.prompt, axis: .vertical)
@@ -154,11 +157,42 @@ struct ChatView: View {
     }
     .tint(viewModel.isEnableSpeech ? Color.green : Color.pink)
   }
-  
+
+  var micButton: some View {
+    ZStack {
+      Group {
+        Circle()
+          .foregroundColor(Color.red.opacity(0.3))
+          .frame(width: 40, height: 40)
+          .scaleEffect(animateMicCircle ? 0.9 : 1.1)
+          .animation(Animation.easeInOut(duration: 0.4).repeatForever(autoreverses: false), value: animateMicCircle)
+          .onAppear {
+            self.animateMicCircle.toggle()
+          }
+        Circle()
+          .frame(width: 30, height: 30)
+          .foregroundColor(.red)
+      }
+      .opacity(viewModel.isRecording ? 1 : 0)
+
+      Image(systemName: "mic")
+    }
+    .contentShape(Rectangle())
+    .frame(width: 60, height: 40)
+    .onTapGesture {
+      if viewModel.isRecording {
+        viewModel.stopSpeechRecognizer()
+      } else {
+        viewModel.startSpeechRecognizer()
+      }
+    }
+  }
+
   // MARK: - private methods
+
   private func scrollToBottom(proxy: ScrollViewProxy) {
-      guard let id = viewModel.messages.last?.id else { return }
-      proxy.scrollTo(id, anchor: .bottomTrailing)
+    guard let id = viewModel.messages.last?.id else { return }
+    proxy.scrollTo(id, anchor: .bottomTrailing)
   }
 }
 

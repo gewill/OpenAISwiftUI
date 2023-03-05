@@ -7,20 +7,8 @@
 
 import AVFoundation
 import ChatGPTSwift
+import Combine
 import SwiftUI
-
-struct Message: Identifiable {
-  enum Role: String {
-    case user, system
-  }
-
-  let id: UUID = .init()
-  let role: Role
-  var text: String
-
-  var isInteracting: Bool
-  var errorText: String
-}
 
 class ViewModel: NSObject, ObservableObject {
   var openAI: ChatGPTAPI!
@@ -51,10 +39,20 @@ class ViewModel: NSObject, ObservableObject {
   @Published var selectedVoice: AVSpeechSynthesisVoice? {
     didSet {
       selectedVoiceIdentifier = selectedVoice?.identifier ?? ""
+      if let language = selectedVoice?.language {
+        speechRecognizer.updateLocale(Locale(identifier: language))
+      }
     }
   }
 
   @AppStorage("selectedVoiceIdentifier") var selectedVoiceIdentifier = ""
+
+  // MARK: - Speech Recognizer properties
+
+  @Published var speechRecognizer = SpeechRecognizer()
+  @Published var isRecording = false
+
+  private var cancellables = Set<AnyCancellable>()
 
   // MARK: - life cycle
 
@@ -62,15 +60,20 @@ class ViewModel: NSObject, ObservableObject {
     super.init()
 
     self.openAI = .init(apiKey: apiKey)
-    setPlaybackMode()
     self.selectedVoice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) ?? AVSpeechSynthesisVoice(language: "en-US")
     synthesizer.delegate = self
     speechOperationQueue.maxConcurrentOperationCount = 1
+    speechRecognizer.$transcript.sink(receiveValue: { [weak self] transcript in
+      self?.prompt = transcript
+    })
+    .store(in: &cancellables)
   }
 
   // MARK: - Request Open API
 
   func requestAI() {
+    stopSpeechRecognizer()
+
     guard apiKey.isEmpty == false else {
       showErrorMessage(text: errorMessage)
       return
@@ -138,6 +141,7 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
   // MARK: - Speech methods
 
   func speak(_ text: String) {
+    setPlaybackMode()
     activePlayback()
 
     let utterance = AVSpeechUtterance(string: text)
@@ -218,12 +222,25 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
 
   func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
     print("synthesizer didFinish")
-    // Speak the next utterance in the queue
-    deactivePlayback()
   }
 
   func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
     print("synthesizer didCancel")
-    deactivePlayback()
+  }
+}
+
+extension ViewModel {
+  // MARK: - Speech Recognizer
+
+  func startSpeechRecognizer() {
+    isRecording = true
+    speechRecognizer.reset()
+    speechRecognizer.transcribe()
+  }
+
+  func stopSpeechRecognizer() {
+    isRecording = false
+    speechRecognizer.stopTranscribing()
+    speechRecognizer.reset()
   }
 }
