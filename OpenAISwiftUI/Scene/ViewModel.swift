@@ -166,7 +166,6 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
 
   func stopSpeak() {
     synthesizer.stopSpeaking(at: .immediate)
-    deactivePlayback()
     speechOperationQueue.cancelAllOperations()
   }
 
@@ -189,17 +188,7 @@ extension ViewModel: AVSpeechSynthesizerDelegate {
   func activePlayback() {
     #if os(iOS)
       do {
-        try AVAudioSession.sharedInstance().setActive(true)
-      } catch {
-        print(error)
-      }
-    #endif
-  }
-
-  func deactivePlayback() {
-    #if os(iOS)
-      do {
-        try AVAudioSession.sharedInstance().setActive(false)
+        try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
       } catch {
         print(error)
       }
@@ -245,6 +234,5 @@ extension ViewModel {
   func stopSpeechRecognizer() {
     isRecording = false
     speechRecognizer.stopTranscribing()
-    speechRecognizer.reset()
   }
 }
