@@ -21,10 +21,20 @@ struct VoicePicker: View {
       ForEach(languageGroups.sorted(by: { $0.key < $1.key }), id: \.key) { language, voices in
         Section(header: Text(language)) {
           ForEach(voices, id: \.identifier) { voice in
-            Text(voice.name).tag(voice as AVSpeechSynthesisVoice?)
+            Text(voice.name + "\(voice.gender.title)").tag(voice as AVSpeechSynthesisVoice?)
           }
         }
       }
+    }
+  }
+}
+
+public extension AVSpeechSynthesisVoiceGender {
+  var title: String {
+    switch self {
+    case .male: return " - male"
+    case .female: return " - female"
+    default: return ""
     }
   }
 }
