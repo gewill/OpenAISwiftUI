@@ -2,6 +2,8 @@
 
 A chat app use OpenAI API and SwiftUI.
 
+[Download on the App Store](https://apps.apple.com/app/id6445994863) 
+
 ## Useage
 
 Input your [API key](https://platform.openai.com/account/api-keys) first.
