@@ -35,6 +35,7 @@ struct TipView: View {
           Image(systemName: "xmark")
         }
         .buttonStyle(.borderedProminent)
+        .keyboardShortcut("w")
       }
       ScrollView {
         LottieView(LottieFiles.buyMeACoffee)

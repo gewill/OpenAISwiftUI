@@ -73,6 +73,7 @@ struct ChatView: View {
               Image(systemName: "chevron.compact.down")
                 .padding(.vertical, 6)
             }
+            .keyboardShortcut(.downArrow)
           } else {
             Button {
               viewModel.showMoreOptions.toggle()
@@ -80,17 +81,20 @@ struct ChatView: View {
               Image(systemName: "chevron.compact.up")
                 .padding(.vertical, 6)
             }
+            .keyboardShortcut(.upArrow)
           }
           Button {
             hasApiKey = false
           } label: {
             Image(systemName: "gear")
           }
+          .keyboardShortcut(",")
           Button {
             isPresentedTipView.toggle()
           } label: {
             Image(systemName: "cup.and.saucer")
           }
+          .keyboardShortcut("t")
           .sheet(isPresented: $isPresentedTipView) {
             TipView(isPresented: $isPresentedTipView)
           }
@@ -100,6 +104,7 @@ struct ChatView: View {
             Image(systemName: "trash.circle.fill")
           }
           .tint(.pink)
+          .keyboardShortcut("d")
           if viewModel.showMoreOptions == false {
             muteButton
           }
@@ -153,6 +158,7 @@ struct ChatView: View {
       }
     }
     .tint(viewModel.isEnableSpeech ? Color.green : Color.pink)
+    .keyboardShortcut("v", modifiers: .shift)
   }
 
   var micButton: some View {
@@ -166,23 +172,26 @@ struct ChatView: View {
           self.animateMicCircle.toggle()
         }
         .opacity(viewModel.isRecording ? 1 : 0)
-      
-      Circle()
-        .frame(width: 40, height: 40)
-        .foregroundColor(viewModel.isRecording ? .red : .accent)
+      Button {
+        if viewModel.isRecording {
+          viewModel.stopSpeechRecognizer()
+        } else {
+          isFocus = false
+          viewModel.startSpeechRecognizer()
+        }
+      } label: {
+        ZStack {
+          Circle()
+            .frame(width: 40, height: 40)
+            .foregroundColor(viewModel.isRecording ? .red : .accent)
 
-      Image(systemName: "mic").foregroundColor(.white)
-    }
-    .contentShape(Rectangle())
-    .frame(width: 60, height: 50)
-    .onTapGesture {
-      if viewModel.isRecording {
-        viewModel.stopSpeechRecognizer()
-      } else {
-        isFocus = false
-        viewModel.startSpeechRecognizer()
+          Image(systemName: "mic").foregroundColor(.white)
+        }
       }
     }
+    .buttonStyle(.borderless)
+    .frame(width: 60, height: 50)
+    .keyboardShortcut("m", modifiers: .shift)
   }
 
   // MARK: - private methods
