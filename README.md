@@ -8,9 +8,9 @@ Input your [API key](https://platform.openai.com/account/api-keys) first.
 
 Here is the Demo video https://www.youtube.com/shorts/qpxkTroEcOY
 
-![Preview](./Images/Preview-20230302-vye.png)
+![Preview](./Images/Preview-iPhone.jpg)
 
-![Preview-mac](./Images/Preview-mac-20230302-wpp.png)
+![Preview-mac](./Images/Preview-mac.jpg)
 
 ## Thanks
 
