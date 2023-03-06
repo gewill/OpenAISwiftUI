@@ -34,7 +34,7 @@
 		BE51152829B38F820065CAE8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BE51153029B3A9CE0065CAE8 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		BE56E92629B3C0E100A1D08E /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
-		BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenAISwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE67A58329B0ECED00BBAD4B /* VoiceAI Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VoiceAI Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISwiftUIApp.swift; sourceTree = "<group>"; };
 		BE67A58829B0ECED00BBAD4B /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		BE67A58429B0ECED00BBAD4B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */,
+				BE67A58329B0ECED00BBAD4B /* VoiceAI Chat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,7 +180,7 @@
 				BEB21FF929B465D7006FAE96 /* LottieUI */,
 			);
 			productName = OpenAISwiftUI;
-			productReference = BE67A58329B0ECED00BBAD4B /* OpenAISwiftUI.app */;
+			productReference = BE67A58329B0ECED00BBAD4B /* VoiceAI Chat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -402,7 +402,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.gewill.OpenAISwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "VoiceAI Chat";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -445,7 +445,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.gewill.OpenAISwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "VoiceAI Chat";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
