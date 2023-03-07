@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */; };
-		BE43A8F029B779C3003D1773 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */; };
+		BE43A8F029B779C3003D1773 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */; platformFilter = ios; };
 		BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51152829B38F820065CAE8 /* LoadingView.swift */; };
 		BE51153129B3A9CE0065CAE8 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51153029B3A9CE0065CAE8 /* SetupView.swift */; };
 		BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */ = {isa = PBXBuildFile; productRef = BE56E92429B3BB6400A1D08E /* Glassfy */; };
