@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */; };
+		BE43A8F029B779C3003D1773 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */; };
 		BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51152829B38F820065CAE8 /* LoadingView.swift */; };
 		BE51153129B3A9CE0065CAE8 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51153029B3A9CE0065CAE8 /* SetupView.swift */; };
 		BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */ = {isa = PBXBuildFile; productRef = BE56E92429B3BB6400A1D08E /* Glassfy */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BE51152829B38F820065CAE8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BE51153029B3A9CE0065CAE8 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		BE56E92629B3C0E100A1D08E /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		BE56E92829B3D91500A1D08E /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */,
 				BE51153029B3A9CE0065CAE8 /* SetupView.swift */,
 				BE67A58829B0ECED00BBAD4B /* ChatView.swift */,
 				BE67A59829B0ED2700BBAD4B /* ViewModel.swift */,
@@ -230,6 +233,7 @@
 			files = (
 				BE67A58F29B0ECEE00BBAD4B /* Preview Assets.xcassets in Resources */,
 				BE67A58B29B0ECEE00BBAD4B /* Assets.xcassets in Resources */,
+				BE43A8F029B779C3003D1773 /* Launch Screen.storyboard in Resources */,
 				BEB21FF429B4652E006FAE96 /* buymeacoffee.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +396,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -436,6 +441,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
