@@ -39,13 +39,11 @@ struct ChatView: View {
                 VStack(alignment: .leading) {
                   if viewModel.isMarkdown {
                     Markdown(message.text)
-                    Markdown(message.errorText)
-                      .foregroundColor(Color.pink)
                   } else {
                     Text(message.text)
-                    Text(message.errorText)
-                      .foregroundColor(Color.pink)
                   }
+                  Text(message.errorText)
+                    .foregroundColor(Color.pink)
                   if message.isInteracting {
                     LoadingView()
                       .padding(.top)
