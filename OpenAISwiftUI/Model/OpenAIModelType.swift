@@ -1,8 +1,8 @@
 //
-//  ChatModel_swift
+//  OpenAIModelType.swift
 //  OpenAISwiftUI
 //
-//  Created by will on 20/03/2023_
+//  Created by will on 20/03/2023.
 //
 
 import Foundation

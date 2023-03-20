@@ -132,7 +132,7 @@ struct ChatView: View {
             }
           }
           HStack {
-            Text("Temperature: \(String(format: "%.1f", viewModel.temperature))")
+            Text("Temperature: \(viewModel.temperature.oneDigitsFormat)")
             Button {
               showingTemperaturePopover = true
             } label: {
@@ -144,7 +144,7 @@ struct ChatView: View {
                 .font(.headline)
                 .padding()
             }
-            Slider(value: $viewModel.temperature, in: 0 ... 2)
+            Slider(value: $viewModel.temperature, in: 0 ... 2, step: 0.1)
           }
 
           HStack {
