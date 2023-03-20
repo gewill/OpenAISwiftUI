@@ -13,6 +13,7 @@ struct ChatView: View {
   @FocusState var isFocus: Bool
   @State var isPresentedTipView: Bool = false
   @State private var animateMicCircle = false
+  @State private var showingTemperaturePopover = false
 
   // MARK: - life cycle
 
@@ -99,18 +100,53 @@ struct ChatView: View {
             TipView(isPresented: $isPresentedTipView)
           }
           Button {
+            viewModel.resetSetttings()
+          } label: {
+            Image(systemName: "slider.horizontal.2.rectangle.and.arrow.triangle.2.circlepath")
+          }
+          .keyboardShortcut("r")
+          Button {
             viewModel.clearMessages()
           } label: {
             Image(systemName: "trash.circle.fill")
           }
           .tint(.pink)
           .keyboardShortcut("d")
+
           if viewModel.showMoreOptions == false {
             muteButton
           }
           Spacer()
         }
         if viewModel.showMoreOptions {
+          HStack {
+            Text("System Prompt")
+            TextField("", text: $viewModel.systemPrompt)
+          }
+          HStack {
+            Text("Model")
+            Picker(selection: $viewModel.modelType, label: Text("")) {
+              ForEach(OpenAIModelType.allCases) { model in
+                Text(model.rawValue)
+              }
+            }
+          }
+          HStack {
+            Text("Temperature: \(String(format: "%.1f", viewModel.temperature))")
+            Button {
+              showingTemperaturePopover = true
+            } label: {
+              Image(systemName: "questionmark.circle")
+            }
+            .buttonStyle(.plain)
+            .popover(isPresented: $showingTemperaturePopover) {
+              Text("Defaults to 1. \nWhat sampling temperature to use, between 0 and 2. \nHigher values like 0.8 will make the output more random, \nwhile lower values like 0.2 will make it more focused and deterministic.")
+                .font(.headline)
+                .padding()
+            }
+            Slider(value: $viewModel.temperature, in: 0 ... 2)
+          }
+
           HStack {
             VoicePicker(selectedVoice: $viewModel.selectedVoice)
             muteButton

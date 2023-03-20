@@ -17,11 +17,14 @@ struct VoicePicker: View {
   @Binding var selectedVoice: AVSpeechSynthesisVoice?
 
   var body: some View {
-    Picker(selection: $selectedVoice, label: Text("Select a voice")) {
-      ForEach(languageGroups.sorted(by: { $0.key < $1.key }), id: \.key) { language, voices in
-        Section(header: Text(language)) {
-          ForEach(voices, id: \.identifier) { voice in
-            Text(voice.name + "\(voice.gender.title)").tag(voice as AVSpeechSynthesisVoice?)
+    Group {
+      Text("Select a voice")
+      Picker(selection: $selectedVoice, label: Text("")) {
+        ForEach(languageGroups.sorted(by: { $0.key < $1.key }), id: \.key) { language, voices in
+          Section(header: Text(language)) {
+            ForEach(voices, id: \.identifier) { voice in
+              Text(voice.name + "\(voice.gender.title)").tag(voice as AVSpeechSynthesisVoice?)
+            }
           }
         }
       }
