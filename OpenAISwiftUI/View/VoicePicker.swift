@@ -18,7 +18,7 @@ struct VoicePicker: View {
 
   var body: some View {
     Group {
-      Text("Select a voice")
+      Text("Voice")
       Picker(selection: $selectedVoice, label: Text("")) {
         ForEach(languageGroups.sorted(by: { $0.key < $1.key }), id: \.key) { language, voices in
           Section(header: Text(language)) {
@@ -28,6 +28,7 @@ struct VoicePicker: View {
           }
         }
       }
+      .frame(maxWidth: .infinity, alignment: .leading)
     }
   }
 }

@@ -122,6 +122,7 @@ struct ChatView: View {
           HStack {
             Text("System Prompt")
             TextField("", text: $viewModel.systemPrompt)
+              .textFieldStyle(.roundedBorder)
           }
           HStack {
             Text("Model")
