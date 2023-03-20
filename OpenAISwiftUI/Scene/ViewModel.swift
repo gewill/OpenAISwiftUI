@@ -100,6 +100,7 @@ class ViewModel: NSObject, ObservableObject {
     withAnimation { [weak self] in
       self?.messages = []
     }
+    isLoading = false
     clearSpeak()
     openAI.deleteHistoryList()
     updateOpenAI()
