@@ -13,7 +13,13 @@ import SwiftUI
 class ViewModel: NSObject, ObservableObject {
   var openAI: ChatGPTAPI!
   @AppStorage("apiKey") var apiKey: String = "" {
-    didSet { openAI = ChatGPTAPI(apiKey: apiKey) }
+    didSet {
+      openAI = ChatGPTAPI(
+        apiKey: apiKey,
+        model: "gpt-3.5-turbo",
+        systemPrompt: "You are a helpful assistant",
+        temperature: 0.5)
+    }
   }
 
   @Published var prompt: String = ""
