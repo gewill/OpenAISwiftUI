@@ -5,6 +5,7 @@
 //  Created by will on 02/03/2023.
 //
 
+import MarkdownUI
 import SwiftUI
 
 struct ChatView: View {
@@ -36,13 +37,22 @@ struct ChatView: View {
                 }
                 .font(.headline)
                 VStack(alignment: .leading) {
-                  Text(message.text)
-                  Text(message.errorText)
-                    .foregroundColor(Color.pink)
+                  if viewModel.isMarkdown {
+                    Markdown(message.text)
+                    Markdown(message.errorText)
+                      .foregroundColor(Color.pink)
+                  } else {
+                    Text(message.text)
+                    Text(message.errorText)
+                      .foregroundColor(Color.pink)
+                  }
                   if message.isInteracting {
                     LoadingView()
+                      .padding(.top)
                   }
                 }
+                .markdownTheme(Theme.gitHubCustom)
+
                 Spacer()
                 Button {
                   copyToClipboard(text: message.text.trimmed)
@@ -152,6 +162,9 @@ struct ChatView: View {
             VoicePicker(selectedVoice: $viewModel.selectedVoice)
             muteButton
           }
+
+          Toggle("Render Markdown", isOn: $viewModel.isMarkdown)
+            .toggleStyle(.switch)
         }
 
         HStack {

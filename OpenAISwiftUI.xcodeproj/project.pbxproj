@@ -22,6 +22,8 @@
 		BE74560B29B1949100E09F7F /* VoicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE74560A29B1949100E09F7F /* VoicePicker.swift */; };
 		BE85254629C8052F000BE7B9 /* OpenAIModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85254529C8052F000BE7B9 /* OpenAIModelType.swift */; };
 		BE85254829C8152B000BE7B9 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85254729C8152B000BE7B9 /* DoubleExtensions.swift */; };
+		BE85254B29C819CE000BE7B9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = BE85254A29C819CE000BE7B9 /* MarkdownUI */; };
+		BE85254D29C8206D000BE7B9 /* ThemeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85254C29C8206D000BE7B9 /* ThemeExtensions.swift */; };
 		BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */; };
 		BEB21FF029B45988006FAE96 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BEB21FEF29B45988006FAE96 /* ConfettiSwiftUI */; };
 		BEB21FF429B4652E006FAE96 /* buymeacoffee.json in Resources */ = {isa = PBXBuildFile; fileRef = BEB21FF329B4652E006FAE96 /* buymeacoffee.json */; };
@@ -49,6 +51,7 @@
 		BE74560A29B1949100E09F7F /* VoicePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicePicker.swift; sourceTree = "<group>"; };
 		BE85254529C8052F000BE7B9 /* OpenAIModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIModelType.swift; sourceTree = "<group>"; };
 		BE85254729C8152B000BE7B9 /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
+		BE85254C29C8206D000BE7B9 /* ThemeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeExtensions.swift; sourceTree = "<group>"; };
 		BEA9467929B113BD005F8F93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BEB21FF329B4652E006FAE96 /* buymeacoffee.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buymeacoffee.json; sourceTree = "<group>"; };
 		BEB21FFC29B465FD006FAE96 /* LottieFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieFiles.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 				BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */,
 				BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */,
 				BEB21FF029B45988006FAE96 /* ConfettiSwiftUI in Frameworks */,
+				BE85254B29C819CE000BE7B9 /* MarkdownUI in Frameworks */,
 				BEB21FFA29B465D7006FAE96 /* LottieUI in Frameworks */,
 				BEB21FF729B465BC006FAE96 /* Lottie in Frameworks */,
 			);
@@ -99,6 +103,7 @@
 				BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */,
 				BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */,
 				BE85254729C8152B000BE7B9 /* DoubleExtensions.swift */,
+				BE85254C29C8206D000BE7B9 /* ThemeExtensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				BEB21FEF29B45988006FAE96 /* ConfettiSwiftUI */,
 				BEB21FF629B465BC006FAE96 /* Lottie */,
 				BEB21FF929B465D7006FAE96 /* LottieUI */,
+				BE85254A29C819CE000BE7B9 /* MarkdownUI */,
 			);
 			productName = OpenAISwiftUI;
 			productReference = BE67A58329B0ECED00BBAD4B /* VoiceAI Chat.app */;
@@ -222,6 +228,7 @@
 				BEB21FEE29B45988006FAE96 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				BEB21FF529B465BC006FAE96 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				BEB21FF829B465D7006FAE96 /* XCRemoteSwiftPackageReference "LottieUI" */,
+				BE85254929C819CE000BE7B9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
 			productRefGroup = BE67A58429B0ECED00BBAD4B /* Products */;
 			projectDirPath = "";
@@ -253,6 +260,7 @@
 			files = (
 				BE74560B29B1949100E09F7F /* VoicePicker.swift in Sources */,
 				BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */,
+				BE85254D29C8206D000BE7B9 /* ThemeExtensions.swift in Sources */,
 				BEB2200129B482A6006FAE96 /* SpeechRecognizer.swift in Sources */,
 				BE67A58929B0ECED00BBAD4B /* ChatView.swift in Sources */,
 				BE85254829C8152B000BE7B9 /* DoubleExtensions.swift in Sources */,
@@ -500,6 +508,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		BE85254929C819CE000BE7B9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/alfianlosari/ChatGPTSwift";
@@ -539,6 +555,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BE56E92329B3BB6400A1D08E /* XCRemoteSwiftPackageReference "ios-sdk" */;
 			productName = Glassfy;
+		};
+		BE85254A29C819CE000BE7B9 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE85254929C819CE000BE7B9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
 		};
 		BEA9467529B0FAC6005F8F93 /* ChatGPTSwift */ = {
 			isa = XCSwiftPackageProductDependency;

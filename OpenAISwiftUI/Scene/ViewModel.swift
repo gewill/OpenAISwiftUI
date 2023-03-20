@@ -16,6 +16,7 @@ class ViewModel: NSObject, ObservableObject {
   @AppStorage("modelType") var modelType: OpenAIModelType = .gpt_3_5_turbo { didSet { updateOpenAI() } }
   @AppStorage("systemPrompt") var systemPrompt: String = "You are a helpful assistant" { didSet { updateOpenAI() } }
   @AppStorage("temperature") var temperature: Double = 1 { didSet { updateOpenAI() } }
+  @AppStorage("isMarkdown") var isMarkdown: Bool = true
 
   @Published var prompt: String = ""
   @Published var messages: [Message] = []
