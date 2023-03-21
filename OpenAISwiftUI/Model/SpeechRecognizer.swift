@@ -10,6 +10,7 @@ class SpeechRecognizer: ObservableObject {
     case notAuthorizedToRecognize
     case notPermittedToRecord
     case recognizerIsUnavailable
+    case noMic
         
     var message: String {
       switch self {
@@ -17,11 +18,15 @@ class SpeechRecognizer: ObservableObject {
       case .notAuthorizedToRecognize: return "Not authorized to recognize speech"
       case .notPermittedToRecord: return "Not permitted to record audio"
       case .recognizerIsUnavailable: return "Recognizer is unavailable"
+      case .noMic: return "Not mic available"
       }
     }
   }
     
+  @Published var isRecording: Bool = false
+  @Published var previousText: String = ""
   @Published var transcript: String = ""
+  @Published var transcriptError: String = ""
     
   private var audioEngine: AVAudioEngine?
   private var request: SFSpeechAudioBufferRecognitionRequest?
@@ -69,6 +74,9 @@ class SpeechRecognizer: ObservableObject {
       The resulting transcription is continuously written to the published `transcript` property.
    */
   func transcribe() {
+    isRecording = true
+    transcriptError = ""
+    transcript = ""
     DispatchQueue(label: "org.gewill.OpenAISwiftUI.SpeechRecognizerQueue", qos: .background).async { [weak self] in
       guard let self = self, let recognizer = self.recognizer, recognizer.isAvailable else {
         self?.speakError(RecognizerError.recognizerIsUnavailable)
@@ -81,17 +89,24 @@ class SpeechRecognizer: ObservableObject {
         self.request = request
         self.task = recognizer.recognitionTask(with: request, resultHandler: self.recognitionHandler(result:error:))
       } catch {
-        self.reset()
-        self.speakError(error)
+        DispatchQueue.main.async {
+          self.isRecording = false
+          self.reset()
+          self.speakError(error)
+        }
       }
     }
   }
     
   /// Stop transcribing audio.
   func stopTranscribing() {
+    isRecording = false
+    previousText = ""
+    transcript = ""
+    transcriptError = ""
     reset()
   }
-    
+   
   /// Reset the speech recognizer.
   func reset() {
     task?.cancel()
@@ -116,6 +131,9 @@ class SpeechRecognizer: ObservableObject {
     let inputNode = audioEngine.inputNode
         
     let recordingFormat = inputNode.outputFormat(forBus: 0)
+    if inputNode.inputFormat(forBus: 0).channelCount == 0 {
+      throw RecognizerError.noMic
+    }
     inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
       request.append(buffer)
     }
@@ -129,13 +147,14 @@ class SpeechRecognizer: ObservableObject {
     let receivedFinalResult = result?.isFinal ?? false
     let receivedError = error != nil
         
-    if receivedFinalResult || receivedError {
-      audioEngine?.stop()
-      audioEngine?.inputNode.removeTap(onBus: 0)
-    }
-        
     if let result = result {
       speak(result.bestTranscription.formattedString)
+    }
+    
+    if receivedFinalResult || receivedError {
+      isRecording = false
+      audioEngine?.stop()
+      audioEngine?.inputNode.removeTap(onBus: 0)
     }
   }
     
@@ -150,7 +169,7 @@ class SpeechRecognizer: ObservableObject {
     } else {
       errorMessage += error.localizedDescription
     }
-    transcript = "<< \(errorMessage) >>"
+    transcriptError = "<< \(errorMessage) >>"
   }
 }
 

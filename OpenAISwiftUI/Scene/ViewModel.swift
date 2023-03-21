@@ -52,7 +52,6 @@ class ViewModel: NSObject, ObservableObject {
   // MARK: - Speech Recognizer properties
 
   @Published var speechRecognizer = SpeechRecognizer()
-  @Published var isRecording = false
 
   private var cancellables = Set<AnyCancellable>()
 
@@ -65,9 +64,13 @@ class ViewModel: NSObject, ObservableObject {
     self.selectedVoice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) ?? AVSpeechSynthesisVoice(language: "en-US")
     synthesizer.delegate = self
     speechOperationQueue.maxConcurrentOperationCount = 1
-    speechRecognizer.$transcript.sink(receiveValue: { [weak self] transcript in
-      self?.prompt = transcript
-    })
+    speechRecognizer.objectWillChange.sink { [weak self] in
+      guard let self else { return }
+      self.objectWillChange.send()
+      if self.speechRecognizer.isRecording {
+        self.prompt = self.speechRecognizer.previousText + self.speechRecognizer.transcript
+      }
+    }
     .store(in: &cancellables)
   }
 
@@ -243,13 +246,12 @@ extension ViewModel {
   // MARK: - Speech Recognizer
 
   func startSpeechRecognizer() {
-    isRecording = true
     speechRecognizer.reset()
+    speechRecognizer.previousText = prompt
     speechRecognizer.transcribe()
   }
 
   func stopSpeechRecognizer() {
-    isRecording = false
     speechRecognizer.stopTranscribing()
   }
 }

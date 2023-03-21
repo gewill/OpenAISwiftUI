@@ -15,6 +15,7 @@ struct ChatView: View {
   @State var isPresentedTipView: Bool = false
   @State private var animateMicCircle = false
   @State private var showingTemperaturePopover = false
+  @FocusState private var promptFieldIsFocused: Bool
 
   // MARK: - life cycle
 
@@ -165,6 +166,7 @@ struct ChatView: View {
             .toggleStyle(.switch)
         }
 
+        Text(viewModel.speechRecognizer.transcriptError).foregroundColor(Color.pink)
         HStack {
           micButton
           Group {
@@ -175,6 +177,12 @@ struct ChatView: View {
               TextField("prompt", text: $viewModel.prompt)
             }
           }
+          .focused($promptFieldIsFocused)
+          .onChange(of: promptFieldIsFocused, perform: { newValue in
+            if newValue {
+              viewModel.stopSpeechRecognizer()
+            }
+          })
           .onSubmit {
             viewModel.requestAI()
           }
@@ -219,9 +227,9 @@ struct ChatView: View {
         .onAppear {
           self.animateMicCircle.toggle()
         }
-        .opacity(viewModel.isRecording ? 1 : 0)
+        .opacity(viewModel.speechRecognizer.isRecording ? 1 : 0)
       Button {
-        if viewModel.isRecording {
+        if viewModel.speechRecognizer.isRecording {
           viewModel.stopSpeechRecognizer()
         } else {
           isFocus = false
@@ -231,7 +239,7 @@ struct ChatView: View {
         ZStack {
           Circle()
             .frame(width: 40, height: 40)
-            .foregroundColor(viewModel.isRecording ? .red : .accent)
+            .foregroundColor(viewModel.speechRecognizer.isRecording ? .red : .accent)
 
           Image(systemName: "mic").foregroundColor(.white)
         }
