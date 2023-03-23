@@ -11,11 +11,10 @@ import SwiftUI
 struct ChatView: View {
   @AppStorage("hasApiKey") var hasApiKey: Bool = false
   @ObservedObject var viewModel = ViewModel()
-  @FocusState var isFocus: Bool
+  @FocusState var promptIsFocused: Bool
   @State var isPresentedTipView: Bool = false
   @State private var animateMicCircle = false
   @State private var showingTemperaturePopover = false
-  @FocusState private var promptFieldIsFocused: Bool
 
   // MARK: - life cycle
 
@@ -65,7 +64,7 @@ struct ChatView: View {
           }
         }
         .onTapGesture {
-          isFocus = false
+          promptIsFocused = false
         }
         .onChange(of: viewModel.messages.last?.text) { _ in
           scrollToBottom(proxy: scrollViewReader)
@@ -169,27 +168,31 @@ struct ChatView: View {
         Text(viewModel.speechRecognizer.transcriptError).foregroundColor(Color.pink)
         HStack {
           micButton
-          Group {
-            if #available(iOS 16.0, macOS 13.0, *) {
-              TextField("prompt", text: $viewModel.prompt, axis: .vertical)
-                .lineLimit(1 ... 5)
-            } else {
-              TextField("prompt", text: $viewModel.prompt)
+          ZStack(alignment: .topLeading) {
+            TextEditor(text: $viewModel.prompt)
+              .fixedSize(horizontal: false, vertical: true)
+              .focused($promptIsFocused)
+              .onChange(of: promptIsFocused, perform: { newValue in
+                if newValue {
+                  viewModel.stopSpeechRecognizer()
+                }
+              })
+              .onSubmit {
+                viewModel.requestAI()
+              }
+            if viewModel.prompt.isEmpty, promptIsFocused == false {
+              Text("prompt")
+                .foregroundColor(Color.placeholderText)
+                .allowsHitTesting(false)
             }
           }
-          .focused($promptFieldIsFocused)
-          .onChange(of: promptFieldIsFocused, perform: { newValue in
-            if newValue {
-              viewModel.stopSpeechRecognizer()
-            }
-          })
-          .onSubmit {
-            viewModel.requestAI()
-          }
-          .focused($isFocus)
-          .textFieldStyle(.roundedBorder)
+          .padding(6)
+          .background(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+              .stroke(Color.separator, lineWidth: 0.5)
+          )
           Button {
-            isFocus = false
+            promptIsFocused = false
             viewModel.requestAI()
           } label: {
             Text("Send")
@@ -199,6 +202,7 @@ struct ChatView: View {
       }
     }
     .padding()
+    .background(Color.systemBackground)
     .tint(.accent)
     .buttonStyle(.borderedProminent)
   }
@@ -232,7 +236,7 @@ struct ChatView: View {
         if viewModel.speechRecognizer.isRecording {
           viewModel.stopSpeechRecognizer()
         } else {
-          isFocus = false
+          promptIsFocused = false
           viewModel.startSpeechRecognizer()
         }
       } label: {
