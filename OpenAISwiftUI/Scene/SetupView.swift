@@ -20,6 +20,7 @@ struct SetupView: View {
 
       Group {
         Text("To proceed, an active OpenAI account is required.").font(.headline)
+        Text("For the fee bill of OpenAI API, please refer to [https://openai.com/pricing](https://openai.com/pricing).")
 
         Text("Follow these steps:")
         Text("1. Visit [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)")

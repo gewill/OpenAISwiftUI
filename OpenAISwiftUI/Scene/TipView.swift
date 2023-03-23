@@ -38,6 +38,9 @@ struct TipView: View {
         .keyboardShortcut("w")
       }
       ScrollView {
+        Text("All features of this application are free.")
+        Text("For the fee bill of OpenAI API, please refer to [https://openai.com/pricing](https://openai.com/pricing).")
+
         LottieView(LottieFiles.buyMeACoffee)
           .loopMode(LottieLoopMode.loop)
           .frame(width: 200, height: 200)
@@ -85,7 +88,7 @@ struct TipView: View {
       Spacer()
     }
     .padding()
-    .frame(minWidth: 300, idealWidth: 500, minHeight: 400, idealHeight: 500)
+    .frame(minWidth: 300, idealWidth: 500, minHeight: 400, idealHeight: 600)
     .task {
       Glassfy.offerings { offers, _ in
         if let offering = offers?[Offering.coffee.rawValue] {
