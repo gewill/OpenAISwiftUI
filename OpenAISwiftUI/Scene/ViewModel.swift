@@ -13,9 +13,9 @@ import SwiftUI
 class ViewModel: NSObject, ObservableObject {
   var openAI: ChatGPTAPI!
   @AppStorage("apiKey") var apiKey: String = "" { didSet { updateOpenAI() } }
-  @AppStorage("modelType") var modelType: OpenAIModelType = .gpt_3_5_turbo { didSet { updateOpenAI() } }
-  @AppStorage("systemPrompt") var systemPrompt: String = "You are a helpful assistant" { didSet { updateOpenAI() } }
-  @AppStorage("temperature") var temperature: Double = 1 { didSet { updateOpenAI() } }
+  @AppStorage("modelType") var modelType: OpenAIModelType = .gpt_3_5_turbo
+  @AppStorage("systemPrompt") var systemPrompt: String = "You are a helpful assistant"
+  @AppStorage("temperature") var temperature: Double = 1
   @AppStorage("isMarkdown") var isMarkdown: Bool = true
 
   @Published var prompt: String = ""
@@ -118,11 +118,7 @@ class ViewModel: NSObject, ObservableObject {
   // MARK: - private methods
 
   private func updateOpenAI() {
-    openAI = ChatGPTAPI(
-      apiKey: apiKey,
-      model: modelType.rawValue,
-      systemPrompt: systemPrompt,
-      temperature: temperature)
+    openAI = ChatGPTAPI(apiKey: apiKey)
   }
 
   @MainActor
@@ -134,7 +130,11 @@ class ViewModel: NSObject, ObservableObject {
     messages.append(message)
 
     do {
-      let stream = try await openAI.sendMessageStream(text: text)
+      let stream = try await openAI.sendMessageStream(
+        text: text,
+        model: modelType.rawValue,
+        systemText: systemPrompt,
+        temperature: temperature)
       for try await text in stream {
         streamText += text
         message.text = streamText.trimmed
