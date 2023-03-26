@@ -197,6 +197,7 @@ struct ChatView: View {
           } label: {
             Text("Send")
           }
+          .keyboardShortcut(.return)
         }
         .disabled(viewModel.isLoading)
       }
