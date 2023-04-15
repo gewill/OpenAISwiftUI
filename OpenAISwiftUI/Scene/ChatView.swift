@@ -39,6 +39,7 @@ struct ChatView: View {
                 VStack(alignment: .leading) {
                   if viewModel.isMarkdown {
                     Markdown(message.text)
+                      .markdownTheme(Theme.gitHubCustom)
                   } else {
                     Text(message.text)
                   }
@@ -49,7 +50,6 @@ struct ChatView: View {
                       .padding(.top)
                   }
                 }
-                .markdownTheme(Theme.gitHubCustom)
 
                 Spacer()
                 Button {

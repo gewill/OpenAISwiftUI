@@ -117,16 +117,28 @@ public extension Theme {
       }
       .fixedSize(horizontal: false, vertical: true)
     }
-    .codeBlock { label in
-      ScrollView(.horizontal) {
-        label
-          .relativeLineSpacing(.em(0.225))
-          .markdownTextStyle {
-            FontFamilyVariant(.monospaced)
-            FontSize(.em(0.85))
+    .codeBlock { configuration in
+      VStack {
+        HStack {
+          Text(configuration.language ?? "")
+          Spacer()
+          Button {
+            copyToClipboard(text: configuration.content)
+          } label: {
+            Label("Copy code", systemImage: "doc.on.doc")
           }
-          .padding(16)
+        }
+        Divider()
+        ScrollView(.horizontal) {
+          configuration.label
+            .relativeLineSpacing(.em(0.225))
+            .markdownTextStyle {
+              FontFamilyVariant(.monospaced)
+              FontSize(.em(0.85))
+            }
+        }
       }
+      .padding(16)
       .background(Color.secondaryBackground)
       .clipShape(RoundedRectangle(cornerRadius: 6))
       .markdownMargin(top: 0, bottom: 16)
