@@ -53,7 +53,7 @@ struct ChatView: View {
 
                 Spacer()
                 Button {
-                  copyToClipboard(text: message.text.trimmed)
+                  copyToClipboard(text: message.text.trimmed + message.errorText)
                 } label: {
                   Image(systemName: "doc.on.doc")
                 }
