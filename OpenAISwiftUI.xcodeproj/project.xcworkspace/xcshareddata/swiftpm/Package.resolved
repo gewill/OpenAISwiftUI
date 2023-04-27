@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "codeviewer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dwarvesf/CodeViewer",
+      "state" : {
+        "revision" : "44bd04af81046ce65a4e38dc97a9dd3d387f069e",
+        "version" : "1.2.4"
+      }
+    },
+    {
       "identity" : "confettiswiftui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/simibac/ConfettiSwiftUI",

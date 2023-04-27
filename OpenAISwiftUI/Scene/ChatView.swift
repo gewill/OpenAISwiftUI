@@ -39,7 +39,7 @@ struct ChatView: View {
                 VStack(alignment: .leading) {
                   if viewModel.isMarkdown {
                     Markdown(message.text)
-                      .markdownTheme(Theme.gitHubCustom)
+                      .markdownTheme(message.isInteracting ? Theme.gitHubCustom : Theme.gitHubCodeViewer)
                   } else {
                     Text(message.text)
                   }

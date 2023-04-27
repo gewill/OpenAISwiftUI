@@ -19,6 +19,7 @@ struct CopyButton: View {
       }
     }
     .disabled(copied)
+    .frame(height: 24)
   }
 }
 
