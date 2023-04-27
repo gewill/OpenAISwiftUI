@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */; };
+		BE3B281729F667B4008CBC9F /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B281629F667B4008CBC9F /* CopyButton.swift */; };
 		BE43A8F029B779C3003D1773 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */; platformFilter = ios; };
 		BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51152829B38F820065CAE8 /* LoadingView.swift */; };
 		BE51153129B3A9CE0065CAE8 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51153029B3A9CE0065CAE8 /* SetupView.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		BE3B281629F667B4008CBC9F /* CopyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
 		BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BE51152829B38F820065CAE8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BE51153029B3A9CE0065CAE8 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				BE74560A29B1949100E09F7F /* VoicePicker.swift */,
 				BE51152829B38F820065CAE8 /* LoadingView.swift */,
+				BE3B281629F667B4008CBC9F /* CopyButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			files = (
 				BE74560B29B1949100E09F7F /* VoicePicker.swift in Sources */,
 				BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */,
+				BE3B281729F667B4008CBC9F /* CopyButton.swift in Sources */,
 				BE85254D29C8206D000BE7B9 /* ThemeExtensions.swift in Sources */,
 				BEB2200129B482A6006FAE96 /* SpeechRecognizer.swift in Sources */,
 				BE67A58929B0ECED00BBAD4B /* ChatView.swift in Sources */,

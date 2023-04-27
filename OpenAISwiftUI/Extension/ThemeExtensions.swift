@@ -122,11 +122,8 @@ public extension Theme {
         HStack {
           Text(configuration.language ?? "")
           Spacer()
-          Button {
-            copyToClipboard(text: configuration.content)
-          } label: {
-            Label("Copy code", systemImage: "doc.on.doc")
-          }
+          CopyButton(text: configuration.content)
+            .buttonStyle(.plain)
         }
         Divider()
         ScrollView(.horizontal) {
