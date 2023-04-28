@@ -3,6 +3,7 @@ import SwiftUI
 struct CopyButton: View {
   @State private var copied: Bool = false
   var text: String
+  var title: String = "Copy"
 
   var body: some View {
     Button(action: {
@@ -15,7 +16,7 @@ struct CopyButton: View {
       if copied {
         Label("Copied!", systemImage: "checkmark")
       } else {
-        Label("Copy code", systemImage: "doc.on.doc")
+        Label(title, systemImage: "doc.on.doc")
       }
     }
     .disabled(copied)

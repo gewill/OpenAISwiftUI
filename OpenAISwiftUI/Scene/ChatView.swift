@@ -24,18 +24,21 @@ struct ChatView: View {
         ScrollView {
           LazyVStack {
             ForEach(viewModel.messages) { message in
-              HStack(alignment: .top, spacing: 6) {
-                VStack {
-                  switch message.role {
-                  case .user:
-                    Image(systemName: "person.circle")
-                    Text("You")
-                  case .system:
-                    Image(systemName: "person.icloud")
-                    Text("AI")
+              VStack(alignment: .leading, spacing: 6) {
+                HStack(alignment: .top, spacing: 6) {
+                  VStack {
+                    switch message.role {
+                    case .user:
+                      Label("You", systemImage: "person.circle")
+                    case .system:
+                      Label("AI", systemImage: "person.icloud")
+                    }
                   }
+                  .font(.headline)
+                  Spacer()
+                  CopyButton(text: message.text.trimmed + message.errorText)
+                    .buttonStyle(.plain)
                 }
-                .font(.headline)
                 VStack(alignment: .leading) {
                   if viewModel.isMarkdown {
                     Markdown(message.text)
@@ -49,13 +52,6 @@ struct ChatView: View {
                     LoadingView()
                       .padding(.top)
                   }
-                }
-
-                Spacer()
-                Button {
-                  copyToClipboard(text: message.text.trimmed + message.errorText)
-                } label: {
-                  Image(systemName: "doc.on.doc")
                 }
               }
               .padding()

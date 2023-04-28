@@ -291,7 +291,7 @@ public extension Theme {
         HStack {
           Text(configuration.language ?? "")
           Spacer()
-          CopyButton(text: configuration.content)
+          CopyButton(text: configuration.content,title: "Copy code")
             .buttonStyle(.plain)
         }
         CodeViewer(content: .constant(configuration.content), mode: CodeWebView.Mode(rawValue: configuration.language ?? "") ?? .text, darkTheme: .tomorrow_night_eighties, lightTheme: .tomorrow, isReadOnly: true, fontSize: 14)
