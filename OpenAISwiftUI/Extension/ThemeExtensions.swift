@@ -291,11 +291,11 @@ public extension Theme {
         HStack {
           Text(configuration.language ?? "")
           Spacer()
-          CopyButton(text: configuration.content,title: "Copy code")
+          CopyButton(text: configuration.content, title: "Copy code")
             .buttonStyle(.plain)
         }
-        CodeViewer(content: .constant(configuration.content), mode: CodeWebView.Mode(rawValue: configuration.language ?? "") ?? .text, darkTheme: .tomorrow_night_eighties, lightTheme: .tomorrow, isReadOnly: true, fontSize: 14)
-          .frame(height: CGFloat(configuration.content.components(separatedBy: .newlines).count) * 19)
+        CodeViewer(content: .constant(configuration.content), mode: CodeWebView.Mode(rawValue: configuration.language ?? "") ?? .text, darkTheme: .tomorrow_night_eighties, lightTheme: .tomorrow, isReadOnly: true, fontSize: 14, lineHeight: 1.3)
+          .frame(height: CGFloat(configuration.content.components(separatedBy: .newlines).count) * 14 * 1.3)
       }
       .padding(16)
       .background(Color.secondaryBackground)
