@@ -21,10 +21,10 @@
     {
       "identity" : "codeviewer",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/dwarvesf/CodeViewer",
+      "location" : "https://github.com/gewill/CodeViewer.git",
       "state" : {
-        "revision" : "44bd04af81046ce65a4e38dc97a9dd3d387f069e",
-        "version" : "1.2.4"
+        "branch" : "main",
+        "revision" : "c09b052701b5cf58545002157a2b9f501f930280"
       }
     },
     {

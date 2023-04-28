@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE180F7A29FA6D0800360F32 /* CodeViewer in Frameworks */ = {isa = PBXBuildFile; productRef = BE180F7929FA6D0800360F32 /* CodeViewer */; };
 		BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */; };
 		BE3B281729F667B4008CBC9F /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B281629F667B4008CBC9F /* CopyButton.swift */; };
+		BE422ECA29FB9C4D00E12A75 /* CodeViewer in Frameworks */ = {isa = PBXBuildFile; productRef = BE422EC929FB9C4D00E12A75 /* CodeViewer */; };
 		BE43A8F029B779C3003D1773 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */; platformFilter = ios; };
 		BE51152929B38F820065CAE8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51152829B38F820065CAE8 /* LoadingView.swift */; };
 		BE51153129B3A9CE0065CAE8 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51153029B3A9CE0065CAE8 /* SetupView.swift */; };
@@ -69,7 +69,7 @@
 			files = (
 				BE56E92529B3BB6400A1D08E /* Glassfy in Frameworks */,
 				BEA9467629B0FAC6005F8F93 /* ChatGPTSwift in Frameworks */,
-				BE180F7A29FA6D0800360F32 /* CodeViewer in Frameworks */,
+				BE422ECA29FB9C4D00E12A75 /* CodeViewer in Frameworks */,
 				BEB21FF029B45988006FAE96 /* ConfettiSwiftUI in Frameworks */,
 				BE85254B29C819CE000BE7B9 /* MarkdownUI in Frameworks */,
 				BEB21FFA29B465D7006FAE96 /* LottieUI in Frameworks */,
@@ -198,7 +198,7 @@
 				BEB21FF629B465BC006FAE96 /* Lottie */,
 				BEB21FF929B465D7006FAE96 /* LottieUI */,
 				BE85254A29C819CE000BE7B9 /* MarkdownUI */,
-				BE180F7929FA6D0800360F32 /* CodeViewer */,
+				BE422EC929FB9C4D00E12A75 /* CodeViewer */,
 			);
 			productName = OpenAISwiftUI;
 			productReference = BE67A58329B0ECED00BBAD4B /* VoiceAI Chat.app */;
@@ -235,7 +235,7 @@
 				BEB21FF529B465BC006FAE96 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				BEB21FF829B465D7006FAE96 /* XCRemoteSwiftPackageReference "LottieUI" */,
 				BE85254929C819CE000BE7B9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
-				BE180F7829FA6D0800360F32 /* XCRemoteSwiftPackageReference "CodeViewer" */,
+				BE422EC829FB9C4D00E12A75 /* XCRemoteSwiftPackageReference "CodeViewer" */,
 			);
 			productRefGroup = BE67A58429B0ECED00BBAD4B /* Products */;
 			projectDirPath = "";
@@ -508,12 +508,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BE180F7829FA6D0800360F32 /* XCRemoteSwiftPackageReference "CodeViewer" */ = {
+		BE422EC829FB9C4D00E12A75 /* XCRemoteSwiftPackageReference "CodeViewer" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dwarvesf/CodeViewer";
+			repositoryURL = "https://github.com/gewill/CodeViewer.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		BE56E92329B3BB6400A1D08E /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
@@ -567,9 +567,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BE180F7929FA6D0800360F32 /* CodeViewer */ = {
+		BE422EC929FB9C4D00E12A75 /* CodeViewer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE180F7829FA6D0800360F32 /* XCRemoteSwiftPackageReference "CodeViewer" */;
+			package = BE422EC829FB9C4D00E12A75 /* XCRemoteSwiftPackageReference "CodeViewer" */;
 			productName = CodeViewer;
 		};
 		BE56E92429B3BB6400A1D08E /* Glassfy */ = {
