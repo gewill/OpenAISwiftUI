@@ -9,6 +9,10 @@ extension String {
   var trimmed: String {
     return trimmingCharacters(in: .whitespacesAndNewlines)
   }
+
+  var localizedStringKey: LocalizedStringKey {
+    LocalizedStringKey(self)
+  }
 }
 
 func copyToClipboard(text: String) {

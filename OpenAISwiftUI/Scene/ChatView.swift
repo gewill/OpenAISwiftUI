@@ -13,8 +13,10 @@ struct ChatView: View {
   @FocusState var promptIsFocused: Bool
   @State var isPresentedTipView: Bool = false
   @State var isPresentedSetupView: Bool = false
+  @State var isPresentedProScene: Bool = false
   @State private var animateMicCircle = false
   @State private var showingTemperaturePopover = false
+  @AppStorage("isPro") var isPro: Bool = false
 
   // MARK: - life cycle
 
@@ -42,7 +44,7 @@ struct ChatView: View {
                 VStack(alignment: .leading) {
                   if viewModel.isMarkdown {
                     Markdown(message.text)
-                      .markdownTheme(message.isInteracting ? Theme.gitHubCustom : Theme.gitHubCodeViewer)
+                      .markdownTheme(message.isInteracting == false && isPro ? Theme.gitHubCodeViewer : Theme.gitHubCustom)
                   } else {
                     Text(message.text)
                   }
@@ -96,6 +98,15 @@ struct ChatView: View {
           .keyboardShortcut(",")
           .sheet(isPresented: $isPresentedSetupView) {
             SetupView(isPresented: $isPresentedSetupView)
+          }
+          Button {
+            isPresentedProScene = true
+          } label: {
+            Image(systemName: "crown")
+          }
+          .keyboardShortcut("p")
+          .sheet(isPresented: $isPresentedProScene) {
+            ProScene()
           }
           Button {
             isPresentedTipView.toggle()

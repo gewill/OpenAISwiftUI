@@ -1,0 +1,28 @@
+// MARK: - Chat View
+"You" = "你";
+"AI" = "AI";
+"System Prompt" = "系统提示语";
+"Model" = "模型";
+"Temperature: %@" = "采样温度：%@";
+"Voice" = "语音";
+"Render Markdown" = "渲染Markdown";
+"Defaults to 1. \nWhat sampling temperature to use, between 0 and 2. \nHigher values like 0.8 will make the output more random, \nwhile lower values like 0.2 will make it more focused and deterministic." = "默认值为 1。\n要使用的采样温度，介于 0 和 2 之间。\n较高的值（如 0.8）将使输出更加随机，\n而较低的值（如 0.2）将使其更加集中和确定。";
+"Send" = "发送";
+
+// MARK: - IAP
+"pro_lifetime" = "终身专业版";
+"pro_lifetime_des" = "一次付费，终身使用";
+
+"Pro" = "专业版";
+"Restore" = "恢复购买";
+"Buy Now" = "立即开通";
+"Pro features: " = "专业版功能：";
+"Free features: " = "免费功能：";
+
+"Chat" = "对话";
+"Basic parameters settings" = "基本参数设置";
+"Voice response" = "朗读回复";
+"Speech recognizer" = "语音识别";
+"Markdown render" = "Markdown渲染";
+"Code syntax highligher" = "代码语法高亮";
+"New features in future" = "未来的新功能";
