@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct SetupView: View {
+  @Binding var isPresented: Bool
   @AppStorage("apiKey") var apiKey: String = ""
-  @AppStorage("hasApiKey") var hasApiKey: Bool = false
 
   var body: some View {
     VStack(alignment: .leading, spacing: 20.0) {
+      HStack {
+        Spacer()
+        Button {
+          isPresented.toggle()
+        } label: {
+          Image(systemName: "xmark")
+        }
+        .buttonStyle(.borderedProminent)
+        .keyboardShortcut("w")
+      }
+
       Text("Hi, there").font(.title)
       Text("Welcome to VoiceAI Chat")
       Text("an [open source](https://github.com/gewill/OpenAISwiftUI) chat app that uses voice to AI.")
@@ -47,7 +58,7 @@ struct SetupView: View {
         Spacer()
         Button {
           if apiKey.isEmpty == false {
-            hasApiKey = true
+            isPresented.toggle()
           }
         } label: {
           Text("Submit")
@@ -64,6 +75,6 @@ struct SetupView: View {
 
 struct SetupView_Previews: PreviewProvider {
   static var previews: some View {
-    SetupView()
+    SetupView(isPresented: .constant(true))
   }
 }

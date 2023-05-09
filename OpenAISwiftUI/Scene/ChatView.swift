@@ -9,10 +9,10 @@ import MarkdownUI
 import SwiftUI
 
 struct ChatView: View {
-  @AppStorage("hasApiKey") var hasApiKey: Bool = false
   @ObservedObject var viewModel = ViewModel()
   @FocusState var promptIsFocused: Bool
   @State var isPresentedTipView: Bool = false
+  @State var isPresentedSetupView: Bool = false
   @State private var animateMicCircle = false
   @State private var showingTemperaturePopover = false
 
@@ -89,11 +89,14 @@ struct ChatView: View {
             .keyboardShortcut(.upArrow)
           }
           Button {
-            hasApiKey = false
+            isPresentedSetupView = true
           } label: {
             Image(systemName: "gear")
           }
           .keyboardShortcut(",")
+          .sheet(isPresented: $isPresentedSetupView) {
+            SetupView(isPresented: $isPresentedSetupView)
+          }
           Button {
             isPresentedTipView.toggle()
           } label: {
@@ -202,6 +205,11 @@ struct ChatView: View {
     .background(Color.systemBackground)
     .tint(.accent)
     .buttonStyle(.borderedProminent)
+    .onAppear {
+      if viewModel.apiKey.isEmpty {
+        isPresentedSetupView = true
+      }
+    }
   }
 
   var muteButton: some View {
