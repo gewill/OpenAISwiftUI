@@ -23,6 +23,7 @@ struct SetupView: View {
         .buttonStyle(.borderedProminent)
         .keyboardShortcut("w")
       }
+      Spacer()
 
       Text("Hi, there").font(.title)
       Text("Welcome to VoiceAI Chat")
