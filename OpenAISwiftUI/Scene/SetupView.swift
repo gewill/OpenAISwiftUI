@@ -36,7 +36,7 @@ struct SetupView: View {
         Text("Follow these steps:")
         Text("1. Visit [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)")
         Text("2. Click \"Create new secret key\" button")
-        Text("3. Copy and paste the generated API key.")
+        Text("3. Copy and paste the generated \"API key\"")
       }
 
       HStack {

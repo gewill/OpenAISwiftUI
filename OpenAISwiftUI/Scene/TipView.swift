@@ -38,9 +38,6 @@ struct TipView: View {
         .keyboardShortcut("w")
       }
       ScrollView {
-        Text("All features of this application are free.")
-        Text("For the fee bill of OpenAI API, please refer to [https://openai.com/pricing](https://openai.com/pricing).")
-
         LottieView(LottieFiles.buyMeACoffee)
           .loopMode(LottieLoopMode.loop)
           .frame(width: 200, height: 200)
@@ -64,7 +61,7 @@ struct TipView: View {
 
         ForEach(skus, id: \.skuId) { sku in
           VStack {
-            Text(sku.product.localizedTitle)
+            Text(sku.product.localizedTitle.localizedStringKey)
               .font(.headline)
             // Text(sku.product.localizedDescription)
             Button {
@@ -79,7 +76,7 @@ struct TipView: View {
                 }
               }
             } label: {
-              Text("Support \(sku.product.priceLocale.currencySymbol ?? "")\(sku.product.price)")
+              Text("Support ") + Text("\(sku.product.priceLocale.currencySymbol ?? "")\(sku.product.price)")
             }
             .buttonStyle(.borderedProminent)
           }

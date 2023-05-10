@@ -1,3 +1,7 @@
+// MARK: - InfoPlist
+"NSMicrophoneUsageDescription" = "您可以在应用程序中使用文本转录。";
+"NSSpeechRecognitionUsageDescription" = "录制音频以转录语音。录音在转录后将被丢弃。";
+
 // MARK: - Chat View
 "You" = "你";
 "AI" = "AI";
@@ -26,3 +30,25 @@
 "Markdown render" = "Markdown渲染";
 "Code syntax highligher" = "代码语法高亮";
 "New features in future" = "未来的新功能";
+
+// MARK: - SetupView
+
+"Hi, there" = "嘿，你好";
+"Welcome to VoiceAI Chat" = "欢迎使用 VoiceAI Chat";
+"an [open source](https://github.com/gewill/OpenAISwiftUI) chat app that uses voice to AI." = "一个 [开源](https://github.com/gewill/OpenAISwiftUI) 聊天应用程序，使用语音和AI对话。";
+"To proceed, an active OpenAI account is required." = "开始使用之前，需要一个有效的 OpenAI 帐户。";
+"For the fee bill of OpenAI API, please refer to [https://openai.com/pricing](https://openai.com/pricing)." = "关于OpenAI API的收费单，请参考 [https://openai.com/pricing](https://openai.com/pricing)。";
+"Follow these steps:" = "请按照以下步骤操作：";
+"1. Visit [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)" = "1. 访问 [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)";
+"2. Click \"Create new secret key\" button" = "2. 点击 \"Create new secret key\" 按钮";
+"3. Copy and paste the generated \"API key\"" = "3. 复制并粘贴生成的 \"API key\"";
+"Submit" = "提交";
+
+// MARK: - TipView
+"Hey, if you enjoy this app, please buy me a coffee." = "嘿，如果您喜欢这个应用程序，请给我买一杯咖啡。";
+"Thanks for your support. 😊" = "感谢您的支持。😊";
+"Support " = "支持 ";
+"Buy Me a Coffee *1" = "给我买杯咖啡 *1";
+"Buy Me a Coffee *2" = "给我买杯咖啡 *2";
+"Buy Me a Coffee *3" = "给我买杯咖啡 *3";
+
