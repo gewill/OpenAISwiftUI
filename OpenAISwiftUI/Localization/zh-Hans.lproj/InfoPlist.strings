@@ -1,0 +1,3 @@
+// MARK: - InfoPlist
+"NSMicrophoneUsageDescription" = "您可以在应用程序中使用文本转录。";
+"NSSpeechRecognitionUsageDescription" = "录制音频以转录语音。录音在转录后将被丢弃。";

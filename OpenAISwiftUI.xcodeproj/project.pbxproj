@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE1B90F929B22E55002F61F3 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */; };
+		BE1E78532A0C8E8F00B40397 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE1E78552A0C8E8F00B40397 /* InfoPlist.strings */; };
 		BE3B281729F667B4008CBC9F /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B281629F667B4008CBC9F /* CopyButton.swift */; };
 		BE422ECA29FB9C4D00E12A75 /* CodeViewer in Frameworks */ = {isa = PBXBuildFile; productRef = BE422EC929FB9C4D00E12A75 /* CodeViewer */; };
 		BE43A8F029B779C3003D1773 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */; platformFilter = ios; };
@@ -42,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		BE1B90F829B22E55002F61F3 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		BE1E78542A0C8E8F00B40397 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE1E78562A0C8E9200B40397 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BE3B281629F667B4008CBC9F /* CopyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
 		BE43A8EF29B779C3003D1773 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BE51152829B38F820065CAE8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -89,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE1E78572A0C8F0200B40397 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				BE709D042A0ABDF400F2861A /* Localizable.strings */,
+				BE1E78552A0C8E8F00B40397 /* InfoPlist.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		BE56E92829B3D91500A1D08E /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,12 +160,12 @@
 				BEA9467929B113BD005F8F93 /* Info.plist */,
 				BE67A58629B0ECED00BBAD4B /* OpenAISwiftUIApp.swift */,
 				BE709CFA2A0AB22600F2861A /* IAPManager.swift */,
-				BE709D042A0ABDF400F2861A /* Localizable.strings */,
 				BE56E92829B3D91500A1D08E /* Scene */,
 				BE56E92929B3D92400A1D08E /* View */,
 				BEB2200429B4865B006FAE96 /* Model */,
 				BE56E92A29B3D92C00A1D08E /* Extension */,
 				BEB21FFB29B465FD006FAE96 /* LottieFiles */,
+				BE1E78572A0C8F0200B40397 /* Localization */,
 				BE67A58A29B0ECEE00BBAD4B /* Assets.xcassets */,
 				BE67A58C29B0ECEE00BBAD4B /* OpenAISwiftUI.entitlements */,
 				BE67A58D29B0ECEE00BBAD4B /* Preview Content */,
@@ -266,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE709D022A0ABDF400F2861A /* Localizable.strings in Resources */,
+				BE1E78532A0C8E8F00B40397 /* InfoPlist.strings in Resources */,
 				BE67A58F29B0ECEE00BBAD4B /* Preview Assets.xcassets in Resources */,
 				BE67A58B29B0ECEE00BBAD4B /* Assets.xcassets in Resources */,
 				BE43A8F029B779C3003D1773 /* Launch Screen.storyboard in Resources */,
@@ -305,6 +318,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		BE1E78552A0C8E8F00B40397 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE1E78542A0C8E8F00B40397 /* en */,
+				BE1E78562A0C8E9200B40397 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		BE709D042A0ABDF400F2861A /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
