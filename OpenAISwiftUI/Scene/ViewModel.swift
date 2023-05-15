@@ -12,7 +12,7 @@ import SwiftUI
 
 class ViewModel: NSObject, ObservableObject {
   var openAI: ChatGPTAPI!
-  @AppStorage("apiKey") var apiKey: String = "" { didSet { updateOpenAI() } }
+  @AppStorage("apiKey") var apiKey: String = ""
   @AppStorage("modelType") var modelType: OpenAIModelType = .gpt_3_5_turbo
   @AppStorage("systemPrompt") var systemPrompt: String = "You are a helpful assistant"
   @AppStorage("temperature") var temperature: Double = 1
@@ -115,11 +115,11 @@ class ViewModel: NSObject, ObservableObject {
     temperature = 1
   }
 
-  // MARK: - private methods
-
-  private func updateOpenAI() {
+  func updateOpenAI() {
     openAI = ChatGPTAPI(apiKey: apiKey)
   }
+
+  // MARK: - private methods
 
   @MainActor
   private func send(text: String) async {

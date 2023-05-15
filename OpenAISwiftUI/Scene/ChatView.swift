@@ -17,6 +17,7 @@ struct ChatView: View {
   @State private var animateMicCircle = false
   @State private var showingTemperaturePopover = false
   @AppStorage("isPro") var isPro: Bool = false
+  @AppStorage("apiKey") var apiKey: String = ""
 
   // MARK: - life cycle
 
@@ -220,6 +221,9 @@ struct ChatView: View {
       if viewModel.apiKey.isEmpty {
         isPresentedSetupView = true
       }
+    }
+    .onChange(of: apiKey) { _ in
+      viewModel.updateOpenAI()
     }
   }
 
