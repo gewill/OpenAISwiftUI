@@ -25,7 +25,7 @@
 "Voice response" = "朗读回复";
 "Speech recognizer" = "语音识别";
 "Markdown render" = "Markdown渲染";
-"Code syntax highligher" = "代码语法高亮";
+"Code syntax highlighter" = "代码语法高亮";
 "New features in future" = "未来的新功能";
 
 // MARK: - SetupView

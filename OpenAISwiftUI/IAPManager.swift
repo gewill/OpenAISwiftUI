@@ -25,12 +25,12 @@ enum FreeFeature: String, CaseIterable, Identifiable {
 }
 
 enum ProFeature: String, CaseIterable, Identifiable {
-  case codeSyntaxHighligher = "Code syntax highligher"
+  case codeSyntaxHighlighter = "Code syntax highlighter"
   case newFeaturesInFuture = "New features in future"
 
   var image: Image {
     switch self {
-    case .codeSyntaxHighligher: return Image(systemName: "curlybraces.square")
+    case .codeSyntaxHighlighter: return Image(systemName: "curlybraces.square")
     case .newFeaturesInFuture: return Image(systemName: "wand.and.stars.inverse")
     }
   }
