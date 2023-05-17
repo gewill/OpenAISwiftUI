@@ -33,10 +33,9 @@
 "Hi, there" = "嘿，你好";
 "Welcome to VoiceAI Chat" = "欢迎使用 VoiceAI Chat";
 "an [open source](https://github.com/gewill/OpenAISwiftUI) chat app that uses voice to AI." = "一个 [开源](https://github.com/gewill/OpenAISwiftUI) 聊天应用程序，使用语音和AI对话。";
-"To proceed, an active OpenAI account is required." = "开始使用之前，需要一个有效的 OpenAI 帐户。";
-"For the fee bill of OpenAI API, please refer to [https://openai.com/pricing](https://openai.com/pricing)." = "关于OpenAI API的收费单，请参考 [https://openai.com/pricing](https://openai.com/pricing)。";
+"To proceed, an active \"API key\" is required." = "开始使用之前，需要一个有效的 \"API key\"。";
 "Follow these steps:" = "请按照以下步骤操作：";
-"1. Visit [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)" = "1. 访问 [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)";
+"1. Visit [\"API key\"](https://platform.openai.com/account/api-keys)" = "1. 访问 [\"API key\"](https://platform.openai.com/account/api-keys)";
 "2. Click \"Create new secret key\" button" = "2. 点击 \"Create new secret key\" 按钮";
 "3. Copy and paste the generated \"API key\"" = "3. 复制并粘贴生成的 \"API key\"";
 "Submit" = "提交";

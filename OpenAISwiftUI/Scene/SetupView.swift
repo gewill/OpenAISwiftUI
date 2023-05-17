@@ -31,11 +31,10 @@ struct SetupView: View {
       Divider()
 
       Group {
-        Text("To proceed, an active OpenAI account is required.").font(.headline)
-        Text("For the fee bill of OpenAI API, please refer to [https://openai.com/pricing](https://openai.com/pricing).")
+        Text("To proceed, an active \"API key\" is required.").font(.headline)
 
         Text("Follow these steps:")
-        Text("1. Visit [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)")
+        Text("1. Visit [\"API key\"](https://platform.openai.com/account/api-keys)")
         Text("2. Click \"Create new secret key\" button")
         Text("3. Copy and paste the generated \"API key\"")
       }
