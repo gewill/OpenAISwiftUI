@@ -7,6 +7,7 @@
 
 import MarkdownUI
 import SwiftUI
+import ChatGPTSwift
 
 struct ChatView: View {
   @ObservedObject var viewModel = ViewModel()
@@ -144,12 +145,11 @@ struct ChatView: View {
               .textFieldStyle(.roundedBorder)
           }
           HStack {
-            Text("Model")
-            Picker(selection: $viewModel.modelType, label: Text("")) {
-              ForEach(OpenAIModelType.allCases) { model in
-                Text(model.rawValue)
-              }
-            }
+            Text("Base URL: ")
+            TextField(ChatGPTAPI.Constants.defaultBaseUrl, text: $viewModel.baseUrl)
+          }
+          HStack {
+            ModelPicker(selectedModel: $viewModel.modelType)
           }
           HStack {
             Text("Temperature: \(viewModel.temperature.oneDigitsFormat)")

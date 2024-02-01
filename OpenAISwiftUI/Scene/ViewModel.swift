@@ -13,9 +13,10 @@ import SwiftUI
 class ViewModel: NSObject, ObservableObject {
   var openAI: ChatGPTAPI!
   @AppStorage("apiKey") var apiKey: String = ""
-  @AppStorage("modelType") var modelType: OpenAIModelType = .gpt_3_5_turbo
-  @AppStorage("systemPrompt") var systemPrompt: String = "You are a helpful assistant"
-  @AppStorage("temperature") var temperature: Double = 1
+  @AppStorage("baseUrl") var baseUrl: String = ChatGPTAPI.Constants.defaultBaseUrl
+  @AppStorage("modelType") var modelType: String = ChatGPTAPI.Constants.defaultSystemText
+  @AppStorage("systemPrompt") var systemPrompt: String = ChatGPTAPI.Constants.defaultSystemText
+  @AppStorage("temperature") var temperature: Double = ChatGPTAPI.Constants.defaultTemperature
   @AppStorage("isMarkdown") var isMarkdown: Bool = true
 
   @Published var prompt: String = ""
@@ -60,8 +61,8 @@ class ViewModel: NSObject, ObservableObject {
   override init() {
     super.init()
 
-    self.openAI = .init(apiKey: apiKey)
-    self.selectedVoice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) ?? AVSpeechSynthesisVoice(language: "en-US")
+    updateOpenAI()
+    selectedVoice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) ?? AVSpeechSynthesisVoice(language: "en-US")
     synthesizer.delegate = self
     speechOperationQueue.maxConcurrentOperationCount = 1
     speechRecognizer.objectWillChange.sink { [weak self] in
@@ -110,13 +111,13 @@ class ViewModel: NSObject, ObservableObject {
   }
 
   func resetSetttings() {
-    systemPrompt = "You are a helpful assistant"
-    modelType = .gpt_3_5_turbo
-    temperature = 1
+    systemPrompt = ChatGPTAPI.Constants.defaultSystemText
+    modelType = ChatGPTAPI.Constants.defaultModel
+    temperature = ChatGPTAPI.Constants.defaultTemperature
   }
 
   func updateOpenAI() {
-    openAI = ChatGPTAPI(apiKey: apiKey)
+    openAI = ChatGPTAPI(apiKey: apiKey, baseUrl: "https://api.perplexity.ai/chat/completions")
   }
 
   // MARK: - private methods
@@ -132,7 +133,7 @@ class ViewModel: NSObject, ObservableObject {
     do {
       let stream = try await openAI.sendMessageStream(
         text: text,
-        model: modelType.rawValue,
+        model: modelType,
         systemText: systemPrompt,
         temperature: temperature)
       for try await text in stream {

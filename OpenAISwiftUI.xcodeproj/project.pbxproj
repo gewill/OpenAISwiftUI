@@ -22,6 +22,7 @@
 		BE67A58F29B0ECEE00BBAD4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67A58E29B0ECEE00BBAD4B /* Preview Assets.xcassets */; };
 		BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59829B0ED2700BBAD4B /* ViewModel.swift */; };
 		BE67A59B29B0ED2700BBAD4B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */; };
+		BE6D30B82B6BE3A300874B66 /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D30B72B6BE3A300874B66 /* ModelPicker.swift */; };
 		BE709CFB2A0AB22600F2861A /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE709CFA2A0AB22600F2861A /* IAPManager.swift */; };
 		BE709CFD2A0AB73F00F2861A /* ProScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE709CFC2A0AB73F00F2861A /* ProScene.swift */; };
 		BE709CFF2A0AB7F200F2861A /* SKProductExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE709CFE2A0AB7F100F2861A /* SKProductExtensions.swift */; };
@@ -58,6 +59,7 @@
 		BE67A58E29B0ECEE00BBAD4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE67A59829B0ED2700BBAD4B /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		BE67A59929B0ED2700BBAD4B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		BE6D30B72B6BE3A300874B66 /* ModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPicker.swift; sourceTree = "<group>"; };
 		BE709CFA2A0AB22600F2861A /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		BE709CFC2A0AB73F00F2861A /* ProScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProScene.swift; sourceTree = "<group>"; };
 		BE709CFE2A0AB7F100F2861A /* SKProductExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductExtensions.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				BE74560A29B1949100E09F7F /* VoicePicker.swift */,
+				BE6D30B72B6BE3A300874B66 /* ModelPicker.swift */,
 				BE51152829B38F820065CAE8 /* LoadingView.swift */,
 				BE3B281629F667B4008CBC9F /* CopyButton.swift */,
 			);
@@ -300,6 +303,7 @@
 				BE85254D29C8206D000BE7B9 /* ThemeExtensions.swift in Sources */,
 				BEB2200129B482A6006FAE96 /* SpeechRecognizer.swift in Sources */,
 				BE67A58929B0ECED00BBAD4B /* ChatView.swift in Sources */,
+				BE6D30B82B6BE3A300874B66 /* ModelPicker.swift in Sources */,
 				BE85254829C8152B000BE7B9 /* DoubleExtensions.swift in Sources */,
 				BE67A59A29B0ED2700BBAD4B /* ViewModel.swift in Sources */,
 				BEB21FFE29B465FD006FAE96 /* LottieFiles.swift in Sources */,
@@ -481,7 +485,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.gewill.OpenAISwiftUI;
 				PRODUCT_NAME = "VoiceAI Chat";
 				SDKROOT = auto;
@@ -525,7 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.gewill.OpenAISwiftUI;
 				PRODUCT_NAME = "VoiceAI Chat";
 				SDKROOT = auto;
@@ -586,10 +590,10 @@
 		};
 		BEA9467429B0FAC6005F8F93 /* XCRemoteSwiftPackageReference "ChatGPTSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alfianlosari/ChatGPTSwift";
+			repositoryURL = "https://github.com/gewill/ChatGPTSwift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		BEB21FEE29B45988006FAE96 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
